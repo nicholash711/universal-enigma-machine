@@ -1,0 +1,57 @@
+{
+    "name": "Enigma M3",
+    "rotors":
+    [
+        {
+            "rotor": "I",
+            "wiring": "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
+            "turnover": "Q"
+        },
+        {
+            "rotor": "II",
+            "wiring": "AJDKSIRUXBLHWTMCQGZNPYFVOE",
+            "turnover": "E"
+        },
+        {
+            "rotor": "III",
+            "wiring": "BDFHJLCPRTXVZNYEIWGAKMUSQO",
+            "turnover": "V"
+        },
+        {
+            "rotor": "IV",
+            "wiring": "ESOVPZJAYQUIRHXLNFTGKDCMWB",
+            "turnover": "J"
+        },
+        {
+            "rotor": "V",
+            "wiring": "VZBRGITYUPSDNHLXAWMJQOFECK",
+            "turnover": "Z"
+        },
+        {
+            "rotor": "VI",
+            "wiring": "VZBRGITYUPSDNHLXAWMJQOFECK",
+            "turnover": "Z"
+        },
+        {
+            "rotor": "VII",
+            "wiring": "VZBRGITYUPSDNHLXAWMJQOFECK",
+            "turnover": "Z"
+        },
+        {
+            "rotor": "VIII",
+            "wiring": "VZBRGITYUPSDNHLXAWMJQOFECK",
+            "turnover": "Z"
+        }
+    ],
+    "reflectors":
+    [
+        {
+            "reflector": "UKW-B",
+            "wiring": "YRUHQSLDPXNGOKMIEBFZCWVJAT"
+        },
+        {
+            "reflector": "UKW-C",
+            "wiring": "FVPJIAOYEDRZXWGCTKUQSBNMHL"
+        }
+    ]
+}
