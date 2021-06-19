@@ -29,7 +29,8 @@ std::array<Rotor, 3> Enigma::getRotors()
 char Enigma::encryptChar(char c)
 {
     rotateRotors();
-    char encrypted = plugboard.encrypt(c);
+    char encrypted = entry.enterChar(c);
+    encrypted = plugboard.encrypt(c);
     encrypted = rotorEncryption(encrypted);
     encrypted = plugboard.encrypt(encrypted);
     
@@ -69,6 +70,11 @@ bool Enigma::setPlug(std::string plug)
 void Enigma::setReflector(Reflector ref)
 {
     reflector = ref;
+}
+
+void Enigma::setEntryWheel(EntryWheel entry)
+{
+    this->entry = entry;
 }
 
 bool Enigma::setPosition(char c, int i)

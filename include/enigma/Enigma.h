@@ -5,6 +5,7 @@
 #include <enigma/Rotor.h>
 #include <enigma/Reflector.h>
 #include <enigma/Plugboard.h>
+#include <enigma/EntryWheel.h>
 
 class Enigma
 {
@@ -12,6 +13,7 @@ class Enigma
         Plugboard plugboard;
         std::array<Rotor, 3> rotors;
         Reflector reflector;
+        EntryWheel entry;
         char rotorEncryption(char c);
         void rotateRotors();
         char encryptChar(char c);
@@ -24,6 +26,7 @@ class Enigma
         bool setRotor(Rotor rot, int pos);
         bool setPlug(std::string plug);
         void setReflector(Reflector ref);
+        void setEntryWheel(EntryWheel entry);
         bool setPosition(char c, int pos);
         bool setRing(char c, int pos);
         bool clearRotor(int i);
