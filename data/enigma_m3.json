@@ -53,5 +53,7 @@
             "reflector": "UKW-C",
             "wiring": "FVPJIAOYEDRZXWGCTKUQSBNMHL"
         }
-    ]
+    ],
+    "plugboard": true,
+    "4 rotors": false
 }
