@@ -1,7 +1,6 @@
 #ifndef ROTOR_H
 #define ROTOR_H
 
-#include <string>
 #include <array>
 
 class Rotor
@@ -9,6 +8,7 @@ class Rotor
     private:
         std::array<std::string, 26> wiring;
         char turnover;
+        char ring;
         std::string name;
 
     public:

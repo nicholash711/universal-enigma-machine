@@ -7,6 +7,7 @@ Rotor::Rotor()
 {
     name = "";
     turnover = 0;
+    ring = 0;
     wiring.fill("");
 }
 
@@ -14,8 +15,9 @@ Rotor::Rotor(std::string wire, char turn, std::string n)
 {
     name = n;
     turnover = toupper(turn);
+    ring = 'A';
     for(int i = 0; i < 26; i++)
-        wiring[i] = std::string() + (char)(i + 65) + (char)toupper(wire[i]) + (char)(i + 65);
+        wiring[i] = std::string() + (char)(i + 65) + (char)toupper(wire[i]);
 }
 
 std::string Rotor::getName()
@@ -35,8 +37,7 @@ char Rotor::getCurrent()
 
 char Rotor:: getRing()
 {   
-    int shift = ('A' - wiring[0][0] + 26 ) % 26;
-    return wiring[shift][2];
+    return ring;
 }
 
 int Rotor::encrypt(char c)
@@ -102,13 +103,11 @@ bool Rotor::setRingPosition(char pos)
     if(!std::isalpha(pos))
         return false;
     pos = toupper(pos);
-    std::array<std::string, 26> temp;
-    int shift = (pos - 'A' + 26) % 26;
-    std::transform(wiring.begin(), wiring.end(), temp.begin(), 
-        [](std::string chars){ return chars.substr(1, 2); });
-    std::rotate(temp.begin(), temp.begin() + shift, temp.end());
+    int shift = (pos - ring + 26) % 26;
+    std::array<std::string, 26> temp = wiring;
     for(int i = 0; i < 26; i++)
-        wiring[i][1] = (temp[i][0] - shift + 26) % 26, wiring[i][2] = temp[i][1];
+        wiring[i] = std::string() + (char)(i + 65 ) + (char)(temp[(i - shift + 26) % 26][1] + shift);
+    ring = pos;
     return true;
 
 }
@@ -124,6 +123,7 @@ void Rotor::operator=(Rotor &rotor)
     name = rotor.name;
     turnover = rotor.turnover;
     wiring = rotor.wiring;
+    ring = rotor.ring;
 }
 
 bool Rotor::operator==(Rotor &rotor)
@@ -139,7 +139,8 @@ std::ostream& operator<<(std::ostream &out, const Rotor &rotor)
 {
     out << "Rotor " << rotor.name << "\n";
     out << "Turnover: " << rotor.turnover << "\n";
-    out << "Curent Position: " << rotor.wiring[0][0] << "\n\n";
+    out << "Curent Position: " << rotor.wiring[0][0] << "\n";
+    out << "Current Ring Setting: " << rotor.ring << "\n\n";
     out << "Wiring:\n";
     int i = 0;
     for(std::string wires: rotor.wiring)
