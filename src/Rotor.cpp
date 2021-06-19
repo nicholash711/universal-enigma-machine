@@ -106,7 +106,7 @@ bool Rotor::setRingPosition(char pos)
     int shift = (pos - ring + 26) % 26;
     std::array<std::string, 26> temp = wiring;
     for(int i = 0; i < 26; i++)
-        wiring[i] = std::string() + (char)(i + 65 ) + (char)(temp[(i - shift + 26) % 26][1] + shift);
+        wiring[i] = std::string() + temp[i][0] + (char)((temp[(i - shift + 26) % 26][1] + shift - 65) % 26 + 65);
     ring = pos;
     return true;
 
