@@ -1,0 +1,40 @@
+{
+    "name": "Enigma I \"Norenigma\"",
+    "rotors":
+    [
+        {
+            "rotor": "I",
+            "wiring": "WTOKASUYVRBXJHQCPZEFMDINLG",
+            "turnover": "Q"
+        },
+        {
+            "rotor": "II",
+            "wiring": "GJLPUBSWEMCTQVHXAOFZDRKYNI",
+            "turnover": "E"
+        },
+        {
+            "rotor": "III",
+            "wiring": "JWFMHNBPUSDYTIXVZGRQLAOEKC",
+            "turnover": "V"
+        },
+        {
+            "rotor": "IV",
+            "wiring": "FGZJMVXEPBWSHQTLIUDYKCNRAO",
+            "turnover": "J"
+        },
+        {
+            "rotor": "V",
+            "wiring": "HEJXQOTZBVFDASCILWPGYNMURK",
+            "turnover": "Z"
+        }
+    ],
+    "reflectors":
+    [
+        {
+            "reflector": "UKW",
+            "wiring": "MOWJYPUXNDSRAIBFVLKZGQCHET"
+        }
+    ],
+    "plugboard": true,
+    "4 rotors": false
+}

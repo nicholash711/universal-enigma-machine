@@ -1,0 +1,48 @@
+{
+    "name": "Enigma I",
+    "rotors":
+    [
+        {
+            "rotor": "I",
+            "wiring": "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
+            "turnover": "Q"
+        },
+        {
+            "rotor": "II",
+            "wiring": "AJDKSIRUXBLHWTMCQGZNPYFVOE",
+            "turnover": "E"
+        },
+        {
+            "rotor": "III",
+            "wiring": "BDFHJLCPRTXVZNYEIWGAKMUSQO",
+            "turnover": "V"
+        },
+        {
+            "rotor": "IV",
+            "wiring": "ESOVPZJAYQUIRHXLNFTGKDCMWB",
+            "turnover": "J"
+        },
+        {
+            "rotor": "V",
+            "wiring": "VZBRGITYUPSDNHLXAWMJQOFECK",
+            "turnover": "Z"
+        }
+    ],
+    "reflectors":
+    [
+        {
+            "reflector": "UKW-A",
+            "wiring": "EJMZALYXVBWFCRQUONTSPIKHGD"
+        },
+        {
+            "reflector": "UKW-B",
+            "wiring": "YRUHQSLDPXNGOKMIEBFZCWVJAT"
+        },
+        {
+            "reflector": "UKW-C",
+            "wiring": "FVPJIAOYEDRZXWGCTKUQSBNMHL"
+        }
+    ],
+    "plugboard": true,
+    "4 rotors": false
+}
