@@ -1,0 +1,252 @@
+{
+    "models":
+    [
+        {
+            "name": "Enigma I",
+            "rotors":
+            [
+                {
+                    "rotor": "I",
+                    "wiring": "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
+                    "turnover": "Q"
+                },
+                {
+                    "rotor": "II",
+                    "wiring": "AJDKSIRUXBLHWTMCQGZNPYFVOE",
+                    "turnover": "E"
+                },
+                {
+                    "rotor": "III",
+                    "wiring": "BDFHJLCPRTXVZNYEIWGAKMUSQO",
+                    "turnover": "V"
+                },
+                {
+                    "rotor": "IV",
+                    "wiring": "ESOVPZJAYQUIRHXLNFTGKDCMWB",
+                    "turnover": "J"
+                },
+                {
+                    "rotor": "V",
+                    "wiring": "VZBRGITYUPSDNHLXAWMJQOFECK",
+                    "turnover": "Z"
+                }
+            ],
+            "reflectors":
+            [
+                {
+                    "reflector": "UKW-A",
+                    "wiring": "EJMZALYXVBWFCRQUONTSPIKHGD"
+                },
+                {
+                    "reflector": "UKW-B",
+                    "wiring": "YRUHQSLDPXNGOKMIEBFZCWVJAT"
+                },
+                {
+                    "reflector": "UKW-C",
+                    "wiring": "FVPJIAOYEDRZXWGCTKUQSBNMHL"
+                }
+            ],
+            "plugboard": true,
+            "4 rotors": false
+        },
+        {
+            "name": "Enigma I \"Norenigma\"",
+            "rotors":
+            [
+                {
+                    "rotor": "I",
+                    "wiring": "WTOKASUYVRBXJHQCPZEFMDINLG",
+                    "turnover": "Q"
+                },
+                {
+                    "rotor": "II",
+                    "wiring": "GJLPUBSWEMCTQVHXAOFZDRKYNI",
+                    "turnover": "E"
+                },
+                {
+                    "rotor": "III",
+                    "wiring": "JWFMHNBPUSDYTIXVZGRQLAOEKC",
+                    "turnover": "V"
+                },
+                {
+                    "rotor": "IV",
+                    "wiring": "FGZJMVXEPBWSHQTLIUDYKCNRAO",
+                    "turnover": "J"
+                },
+                {
+                    "rotor": "V",
+                    "wiring": "HEJXQOTZBVFDASCILWPGYNMURK",
+                    "turnover": "Z"
+                }
+            ],
+            "reflectors":
+            [
+                {
+                    "reflector": "UKW",
+                    "wiring": "MOWJYPUXNDSRAIBFVLKZGQCHET"
+                }
+            ],
+            "plugboard": true,
+            "4 rotors": false
+        },
+        {
+            "name": "Enigma I \"Sondermaschine\"",
+            "rotors":
+            [
+                {
+                    "rotor": "I",
+                    "wiring": "VEOSIRZUJDQCKGWYPNXAFLTHMB",
+                    "turnover": "Q"
+                },
+                {
+                    "rotor": "II",
+                    "wiring": "UEMOATQLSHPKCYFWJZBGVXINDR",
+                    "turnover": "E"
+                },
+                {
+                    "rotor": "III",
+                    "wiring": "TZHXMBSIPNURJFDKEQVCWGLAOY",
+                    "turnover": "V"
+                }
+            ],
+            "reflectors":
+            [
+                {
+                    "reflector": "UKW",
+                    "wiring": "CIAGSNDRBYTPZFULVHEKOQXWJM"
+                }
+            ],
+            "plugboard": true,
+            "4 rotors": false
+        },
+        {
+            "name": "Enigma M3",
+            "rotors":
+            [
+                {
+                    "rotor": "I",
+                    "wiring": "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
+                    "turnover": "Q"
+                },
+                {
+                    "rotor": "II",
+                    "wiring": "AJDKSIRUXBLHWTMCQGZNPYFVOE",
+                    "turnover": "E"
+                },
+                {
+                    "rotor": "III",
+                    "wiring": "BDFHJLCPRTXVZNYEIWGAKMUSQO",
+                    "turnover": "V"
+                },
+                {
+                    "rotor": "IV",
+                    "wiring": "ESOVPZJAYQUIRHXLNFTGKDCMWB",
+                    "turnover": "J"
+                },
+                {
+                    "rotor": "V",
+                    "wiring": "VZBRGITYUPSDNHLXAWMJQOFECK",
+                    "turnover": "Z"
+                },
+                {
+                    "rotor": "VI",
+                    "wiring": "JPGVOUMFYQBENHZRDKASXLICTW",
+                    "turnover": "ZM"
+                },
+                {
+                    "rotor": "VII",
+                    "wiring": "NZJHGRCXMYSWBOUFAIVLPEKQDT",
+                    "turnover": "ZM"
+                },
+                {
+                    "rotor": "VIII",
+                    "wiring": "FKQHTLXOCBJSPDZRAMEWNIUYGV",
+                    "turnover": "ZM"
+                }
+            ],
+            "reflectors":
+            [
+                {
+                    "reflector": "UKW-B",
+                    "wiring": "YRUHQSLDPXNGOKMIEBFZCWVJAT"
+                },
+                {
+                    "reflector": "UKW-C",
+                    "wiring": "FVPJIAOYEDRZXWGCTKUQSBNMHL"
+                }
+            ],
+            "plugboard": true,
+            "4 rotors": false
+        },
+        {
+            "name": "Enigma M4",
+            "rotors":
+            [
+                {
+                    "rotor": "I",
+                    "wiring": "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
+                    "turnover": "Q"
+                },
+                {
+                    "rotor": "II",
+                    "wiring": "AJDKSIRUXBLHWTMCQGZNPYFVOE",
+                    "turnover": "E"
+                },
+                {
+                    "rotor": "III",
+                    "wiring": "BDFHJLCPRTXVZNYEIWGAKMUSQO",
+                    "turnover": "V"
+                },
+                {
+                    "rotor": "IV",
+                    "wiring": "ESOVPZJAYQUIRHXLNFTGKDCMWB",
+                    "turnover": "J"
+                },
+                {
+                    "rotor": "V",
+                    "wiring": "VZBRGITYUPSDNHLXAWMJQOFECK",
+                    "turnover": "Z"
+                },
+                {
+                    "rotor": "VI",
+                    "wiring": "JPGVOUMFYQBENHZRDKASXLICTW",
+                    "turnover": "ZM"
+                },
+                {
+                    "rotor": "VII",
+                    "wiring": "NZJHGRCXMYSWBOUFAIVLPEKQDT",
+                    "turnover": "ZM"
+                },
+                {
+                    "rotor": "VIII",
+                    "wiring": "FKQHTLXOCBJSPDZRAMEWNIUYGV",
+                    "turnover": "ZM"
+                }
+            ],
+            "rotor 4":
+            [
+                {
+                    "rotor": "Beta",
+                    "wiring": "LEYJVCNIXWPBQMDRTAKZGFUHOS"
+                },
+                {
+                    "rotor": "Gamma",
+                    "wiring": "FSOKANUERHMBTIYCWLQPZXVGJD"
+                }
+            ],
+            "reflectors":
+            [
+                {
+                    "reflector": "UKW-B Thin",
+                    "wiring": "ENKQAUYWJICOPBLMDXZVFTHRGS"
+                },
+                {
+                    "reflector": "UKW-C Thin",
+                    "wiring": "RDOBJNTKVEHMLFCWZAXGYIPSUQ"
+                }
+            ],
+            "plugboard": true,
+            "4 rotors": true
+        }
+    ]
+}
