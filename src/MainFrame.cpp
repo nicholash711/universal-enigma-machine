@@ -4,6 +4,8 @@
 #include <appcomponents/RotorSelect.h>
 #include <appcomponents/PlugboardInput.h>
 #include <appcomponents/ReflectorSelect.h>
+#include <DataImport.h>
+#include <cstdio>
 
 MainFrame::MainFrame() : 
     wxFrame(nullptr, wxID_ANY, "Enigma Machine", wxPoint(100, 100), wxSize(800, 600),  wxMINIMIZE_BOX | wxSYSTEM_MENU | wxCAPTION | wxCLOSE_BOX | wxCLIP_CHILDREN)
@@ -22,9 +24,9 @@ MainFrame::MainFrame() :
 
     // Model Menu Creation
     text = new wxStaticText(this, wxID_ANY, "Enigma Model: ", wxPoint(10, 12), wxSize(100, 20));
-    ModelSelect* menu = new ModelSelect(this, wxPoint(110, 10), wxSize(300, 20));
+    ModelSelect* menu = new ModelSelect(this, wxPoint(110, 10), wxSize(300, 22));
     line = new wxStaticLine(this, wxID_ANY, wxPoint(10, 45), wxSize(780, 1));
-
+    
 
     // Rotor Controls Creation
     RotorSelect* rotors = nullptr;
@@ -61,7 +63,9 @@ MainFrame::MainFrame() :
     encode->Bind(wxEVT_BUTTON, OnPress, this);
 
     enigma = new Enigma();
-    enigma->clearRotor(1);
+    DataImport* file = new DataImport("models.json");
+    std::vector<std::string> names = file->getModels();
+    menu->loadModels(file->getModels());
 }
 
 MainFrame::~MainFrame()
@@ -75,5 +79,5 @@ void MainFrame::OnPress(wxCommandEvent& event)
 
 void MainFrame::PressFile(wxCommandEvent& event)
 {
-    std::cout << FindFocus() << std::endl;
+    std::cout << FindFocus() << std::endl;  
 }

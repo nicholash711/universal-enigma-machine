@@ -10,6 +10,7 @@ class MainFrame : public wxFrame
     public:
         MainFrame();
         ~MainFrame();
+        void loadComponents();
 
     private:
         Enigma* enigma = nullptr;

@@ -2,7 +2,7 @@
 
 
 ModelSelect::ModelSelect(wxWindow* parent, const wxPoint &pos=wxDefaultPosition, const wxSize &size=wxDefaultSize) :
-    wxComboBox(parent, ID_MODEL_SELECTOR, "", pos, size)
+    wxComboBox(parent, ID_MODEL_SELECTOR, "", pos, size, {}, wxCB_READONLY)
 {
     this->Bind(wxEVT_COMBOBOX, OnChoose, this);
 }
@@ -16,7 +16,13 @@ void ModelSelect::OnChoose(wxCommandEvent& event)
     wxString choice = this->GetValue();
 }
 
-void ModelSelect::loadModels(std::vector<wxString> models)
+void ModelSelect::loadModels(std::vector<std::string> models)
 {
-    this->Set(models);
+    std::vector<wxString> names;
+    names.resize(models.size());
+    std::transform(models.begin(), models.end(), names.begin(), [](std::string str){
+        wxString name(str);
+        return name;
+    });
+    this->Set(names);
 }
