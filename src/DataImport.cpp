@@ -18,13 +18,9 @@ std::vector<std::string> DataImport::getModels()
 {
     std::vector<std::string> names;
     const Value& models = json["models"];
-
-    printf("%d\n", models.IsArray());
-
     for(auto& model : models.GetArray())
     {
         names.push_back(model["name"].GetString());
-        printf("%s\n", model["name"].GetString());
     }
 
 
