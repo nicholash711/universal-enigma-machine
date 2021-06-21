@@ -11,7 +11,7 @@ class ModelSelect : public wxComboBox
     public:
         ModelSelect(wxWindow* parent, const wxPoint &pos, const wxSize &size);
         ~ModelSelect();
-        void loadModels();
+        void loadModels(std::vector<wxString> models);
 
     private:
         void OnChoose(wxCommandEvent& event);

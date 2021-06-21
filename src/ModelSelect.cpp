@@ -16,7 +16,7 @@ void ModelSelect::OnChoose(wxCommandEvent& event)
     wxString choice = this->GetValue();
 }
 
-void ModelSelect::loadModels()
+void ModelSelect::loadModels(std::vector<wxString> models)
 {
-
+    this->Set(models);
 }
