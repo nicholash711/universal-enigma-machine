@@ -73,7 +73,9 @@ void CharSpin::OnTextChange(wxCommandEvent &event)
 void CharSpin::OnTextEnter(wxCommandEvent& event)
 {
     std::string str = std::string(textbox->GetValue());
-    if(isNum(str))
+    if(str.empty())
+        setText('A');
+    else if(isNum(str))
     {
         int i = std::stoi(str);
         if(i >= 0 && i <= 26)
@@ -105,8 +107,10 @@ void CharSpin::OnIdle(wxIdleEvent& event)
 }
 
 void CharSpin::OnLoseFocus(wxFocusEvent& event)
-{
-    if(isNum(std::string(textbox->GetValue())))
+{   
+    if(std::string(textbox->GetValue()).empty())
+        setText('A');
+    else if(isNum(std::string(textbox->GetValue())))
     {
         int i = std::stoi(std::string(textbox->GetValue()));
         if(i >= 0 && i <= 26)
