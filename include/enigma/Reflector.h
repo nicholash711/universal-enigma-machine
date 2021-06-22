@@ -11,6 +11,7 @@ class Reflector
         std::string name;
     public:
         Reflector();
+        Reflector(Reflector& ref);
         Reflector(std::string wiring, std::string n);
         std::string getName();
         int reflect(char c);

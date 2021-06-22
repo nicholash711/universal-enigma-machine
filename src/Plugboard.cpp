@@ -7,6 +7,12 @@ Plugboard::Plugboard()
     plugs = 0;
 }
 
+Plugboard::Plugboard(Plugboard& plug)
+{
+    this->plugboard = plug.plugboard;
+    this->plugs = plug.plugs;
+}
+
 bool Plugboard::addPlug(std::string pair)
 {   
     if(plugs == 10)
