@@ -8,6 +8,7 @@
 #include <appcomponents/CharSpin.h>
 #include <appcomponents/ReflectorSelect.h>
 #include <appcomponents/PlugboardInput.h>
+#include <appcomponents/EntryWheelSelect.h>
 
 class MainFrame : public wxFrame
 { 
@@ -25,6 +26,7 @@ class MainFrame : public wxFrame
         CharSpin* spin2[4];
         ReflectorSelect* reflectors;
         PlugboardInput* plugboardInput;
+        EntryWheelSelect* wheels;
         DataImport* file = nullptr;
         std::string model = "";
         

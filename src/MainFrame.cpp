@@ -44,10 +44,12 @@ MainFrame::MainFrame() :
 
 
     // Entry Wheel, Reflector, & Plugboard Controls Creation
-    text = new wxStaticText(this, wxID_ANY, "Reflector:", wxPoint(440, 62), wxSize(60, 20));
-    reflectors = new ReflectorSelect(this, wxPoint(500, 60), wxSize(290, 20), enigma->getReflector());
-    text = new wxStaticText(this, wxID_ANY, "Plugboard Setting:", wxPoint(440, 102), wxSize(110, 20));
-    PlugboardInput* plugboardInput = new PlugboardInput(this, wxPoint(550, 100), wxSize(240, 24), enigma->getPlugboard());
+    text = new wxStaticText(this, wxID_ANY, "Entry Wheel:", wxPoint(440, 62), wxSize(60, 20));
+    wheels = new EntryWheelSelect(this, wxPoint(500, 60), wxSize(290, 20), enigma->getEntryWheel());
+    text = new wxStaticText(this, wxID_ANY, "Reflector:", wxPoint(440, 102), wxSize(60, 20));
+    reflectors = new ReflectorSelect(this, wxPoint(500, 100), wxSize(290, 20), enigma->getReflector());
+    text = new wxStaticText(this, wxID_ANY, "Plugboard Setting:", wxPoint(440, 142), wxSize(110, 20));
+    PlugboardInput* plugboardInput = new PlugboardInput(this, wxPoint(550, 140), wxSize(240, 24), enigma->getPlugboard());
     line = new wxStaticLine(this, wxID_ANY, wxPoint(10, 210), wxSize(780, 1));
 
 
