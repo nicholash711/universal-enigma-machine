@@ -2,11 +2,11 @@
 #define MAINFRAME_H
 
 #include <wx/wx.h>
-#include <wx/statline.h>
 #include <enigma/Enigma.h>
 #include <DataImport.h>
 #include <appcomponents/RotorSelect.h>
 #include <appcomponents/CharSpin.h>
+#include <appcomponents/ReflectorSelect.h>
 
 class MainFrame : public wxFrame
 { 
@@ -20,12 +20,11 @@ class MainFrame : public wxFrame
         DataImport* file = nullptr;
         wxTextCtrl* input = nullptr;
         wxTextCtrl* output = nullptr;
-        wxStaticText* text = nullptr;
-        wxStaticLine* line = nullptr;
         std::string model = "";
         RotorSelect* rotors[4];
         CharSpin* spin1[4];
         CharSpin* spin2[4];
+        ReflectorSelect* reflectors;
 
         void loadRotors(std::string name);
 

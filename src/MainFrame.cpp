@@ -1,11 +1,11 @@
-#include <rapidjson/document.h>
 #include <appcomponents/MainFrame.h>
 #include <appcomponents/ModelSelect.h>
 #include <appcomponents/CharSpin.h>
 #include <appcomponents/RotorSelect.h>
 #include <appcomponents/PlugboardInput.h>
 #include <appcomponents/ReflectorSelect.h>
-#include <cstdio>
+#include <wx/statline.h>
+#include <rapidjson/document.h>
 
 namespace json = rapidjson;
 
@@ -13,6 +13,9 @@ MainFrame::MainFrame() :
     wxFrame(nullptr, wxID_ANY, "Enigma Machine", wxPoint(100, 100), wxSize(800, 600),  wxMINIMIZE_BOX | wxSYSTEM_MENU | wxCAPTION | wxCLOSE_BOX | wxCLIP_CHILDREN)
 {
     this->SetBackgroundColour(wxColour(230, 230, 230));
+    wxStaticText* text = nullptr;
+    wxStaticLine* line = nullptr;
+
 
     // Menu Initialization
     wxMenuBar* menuBar = new wxMenuBar();
@@ -48,7 +51,7 @@ MainFrame::MainFrame() :
 
     // Reflector & Plugboard Controls Creation
     text = new wxStaticText(this, wxID_ANY, "Reflector:", wxPoint(410, 62), wxSize(60, 20));
-    ReflectorSelect* reflectorSelect = new ReflectorSelect(this, wxPoint(470, 60), wxSize(320, 20));
+    reflectors = new ReflectorSelect(this, wxPoint(470, 60), wxSize(320, 20));
     text = new wxStaticText(this, wxID_ANY, "Plugboard Setting:", wxPoint(410, 102), wxSize(110, 20));
     PlugboardInput* plugboardInput = new PlugboardInput(this, wxPoint(520, 100), wxSize(270, 24));
     line = new wxStaticLine(this, wxID_ANY, wxPoint(10, 210), wxSize(780, 1));
@@ -76,6 +79,7 @@ void MainFrame::loadComponents(std::string name)
 {
     model = name;
     loadRotors(name);
+    reflectors->loadReflectors(file->getReflectorList(name));
 }
 
 void MainFrame::loadRotors(std::string name)
@@ -102,10 +106,7 @@ void MainFrame::loadRotors(std::string name)
         rotors[3]->Enable(false);
         spin1[3]->enable(false);
         spin2[3]->enable(false);
-        
     }
-        
-
 }
 
 void MainFrame::OnPress(wxCommandEvent& event)

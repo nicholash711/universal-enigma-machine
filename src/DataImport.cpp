@@ -44,13 +44,21 @@ std::vector<std::string> DataImport::getRotorList(std::string model)
     return rotors;
 }
 
-std::vector<std::string>  DataImport::getRotor4(std::string model)
+std::vector<std::string> DataImport::getRotor4(std::string model)
 {
     std::vector<std::string> rotors;
     for(auto& m : objects[model]->operator[]("rotor 4").GetArray())
         rotors.push_back(m["rotor"].GetString());
         
     return rotors;
+}
+
+std::vector<std::string> DataImport::getReflectorList(std::string model)
+{
+    std::vector<std::string> reflectors;
+    for(auto& m : objects[model]->operator[]("reflectors").GetArray())
+        reflectors.push_back(m["reflector"].GetString());
+    return reflectors;
 }
 
 bool DataImport::hasFour(std::string model)
