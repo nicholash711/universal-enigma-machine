@@ -7,6 +7,7 @@
 #include <appcomponents/RotorSelect.h>
 #include <appcomponents/CharSpin.h>
 #include <appcomponents/ReflectorSelect.h>
+#include <appcomponents/PlugboardInput.h>
 
 class MainFrame : public wxFrame
 { 
@@ -25,6 +26,7 @@ class MainFrame : public wxFrame
         CharSpin* spin1[4];
         CharSpin* spin2[4];
         ReflectorSelect* reflectors;
+        PlugboardInput* plugboardInput;
 
         void loadRotors(std::string name);
 

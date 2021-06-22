@@ -1,9 +1,5 @@
 #include <appcomponents/MainFrame.h>
 #include <appcomponents/ModelSelect.h>
-#include <appcomponents/CharSpin.h>
-#include <appcomponents/RotorSelect.h>
-#include <appcomponents/PlugboardInput.h>
-#include <appcomponents/ReflectorSelect.h>
 #include <wx/statline.h>
 #include <rapidjson/document.h>
 
@@ -31,8 +27,6 @@ MainFrame::MainFrame() :
     text = new wxStaticText(this, wxID_ANY, "Enigma Model: ", wxPoint(10, 12), wxSize(100, 20));
     ModelSelect* menu = new ModelSelect(this, wxPoint(110, 10), wxSize(300, 24));
     line = new wxStaticLine(this, wxID_ANY, wxPoint(10, 45), wxSize(780, 1));
-
-    menu->Bind(wxEVT_COMBOBOX, OnModelChoose, this);
     
 
     // Rotor Controls Creation
@@ -40,20 +34,20 @@ MainFrame::MainFrame() :
     {
         const std::string rotor = "Rotor " + std::to_string(i + 1) + ":";
         text = new wxStaticText(this, wxID_ANY, std::string("Rotor " + std::to_string(i + 1) + ":"), wxPoint(10, 62 + 40 * i), wxSize(50, 20));
-        rotors[i] = new RotorSelect(this, wxPoint(60, 60 + 40 * i), wxSize(40, 20));
-        text = new wxStaticText(this, wxID_ANY, "Rotor Position:", wxPoint(120, 62 + 40 * i), wxSize(80, 20));
-        spin1[i] = new CharSpin(this, wxPoint(210, 60 + 40 * i), wxSize(40, 20));
-        text = new wxStaticText(this, wxID_ANY, "Ring Positon:", wxPoint(270, 62 + 40 * i), wxSize(80, 20));
-        spin2[i] = new CharSpin(this, wxPoint(350, 60 + 40 * i), wxSize(40, 20));
+        rotors[i] = new RotorSelect(this, wxPoint(60, 60 + 40 * i), wxSize(70, 20));
+        text = new wxStaticText(this, wxID_ANY, "Rotor Position:", wxPoint(150, 62 + 40 * i), wxSize(80, 20));
+        spin1[i] = new CharSpin(this, wxPoint(240, 60 + 40 * i), wxSize(40, 20));
+        text = new wxStaticText(this, wxID_ANY, "Ring Positon:", wxPoint(300, 62 + 40 * i), wxSize(80, 20));
+        spin2[i] = new CharSpin(this, wxPoint(380, 60 + 40 * i), wxSize(40, 20));
 
     }
 
 
     // Reflector & Plugboard Controls Creation
-    text = new wxStaticText(this, wxID_ANY, "Reflector:", wxPoint(410, 62), wxSize(60, 20));
-    reflectors = new ReflectorSelect(this, wxPoint(470, 60), wxSize(320, 20));
-    text = new wxStaticText(this, wxID_ANY, "Plugboard Setting:", wxPoint(410, 102), wxSize(110, 20));
-    PlugboardInput* plugboardInput = new PlugboardInput(this, wxPoint(520, 100), wxSize(270, 24));
+    text = new wxStaticText(this, wxID_ANY, "Reflector:", wxPoint(440, 62), wxSize(60, 20));
+    reflectors = new ReflectorSelect(this, wxPoint(500, 60), wxSize(290, 20));
+    text = new wxStaticText(this, wxID_ANY, "Plugboard Setting:", wxPoint(440, 102), wxSize(110, 20));
+    PlugboardInput* plugboardInput = new PlugboardInput(this, wxPoint(550, 100), wxSize(240, 24));
     line = new wxStaticLine(this, wxID_ANY, wxPoint(10, 210), wxSize(780, 1));
 
 
@@ -67,8 +61,12 @@ MainFrame::MainFrame() :
     encode->Bind(wxEVT_BUTTON, OnPress, this);
 
     enigma = new Enigma();
+
+    //File Input
     file = new DataImport("models.json");
     menu->loadModels(file->getModelList());
+    menu->Bind(wxEVT_COMBOBOX, OnModelChoose, this);
+
 }
 
 MainFrame::~MainFrame()
