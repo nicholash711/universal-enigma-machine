@@ -13,7 +13,8 @@ class Rotor
 
     public:
         Rotor();
-        Rotor(std::string wire, std::string turn, std::string n);
+        Rotor(Rotor& rotor);
+        Rotor(std::string wiring, std::string turnover, std::string name);
         std::string getName();
         std::string getTurnover();
         char getCurrent();

@@ -11,15 +11,23 @@ Rotor::Rotor()
     wiring.fill("");
 }
 
-Rotor::Rotor(std::string wire, std::string turn, std::string n)
+Rotor::Rotor(Rotor& rotor)
 {
-    name = n;
-    turnover = turn;
-    for(char& c : turnover)
+    this->name = rotor.name;
+    this->turnover = rotor.turnover;
+    this->ring = rotor.ring;
+    this->wiring = rotor.wiring;
+}
+
+Rotor::Rotor(std::string wiring, std::string turnover, std::string name)
+{
+    this->name = name;
+    this->turnover = turnover;
+    for(char& c : this->turnover)
         c = toupper(c);
     ring = 'A';
     for(int i = 0; i < 26; i++)
-        wiring[i] = std::string() + (char)(i + 65) + (char)toupper(wire[i]);
+        this->wiring[i] = std::string() + (char)(i + 65) + (char)toupper(wiring[i]);
 }
 
 std::string Rotor::getName()
