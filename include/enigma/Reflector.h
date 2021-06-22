@@ -12,7 +12,7 @@ class Reflector
     public:
         Reflector();
         Reflector(Reflector& ref);
-        Reflector(std::string wiring, std::string n);
+        Reflector(std::string wiring, std::string name);
         std::string getName();
         int reflect(char c);
         int reflect(int c);
