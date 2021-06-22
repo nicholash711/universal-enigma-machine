@@ -6,9 +6,16 @@ Reflector::Reflector()
     name = "";
     reflector.fill(0);
 }
-Reflector::Reflector(std::string wiring, std::string n)
+
+Reflector::Reflector(Reflector& ref)
 {
-    name = n;
+    this->name = ref.name;
+    this->reflector = ref.reflector;
+}
+
+Reflector::Reflector(std::string wiring, std::string name)
+{
+    this->name = name;
     for(int i = 0; i < 26; i++)
         reflector[i] = wiring[i];
 }
