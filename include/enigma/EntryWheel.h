@@ -10,6 +10,7 @@ class EntryWheel
 
     public:
         EntryWheel();
+        EntryWheel(EntryWheel& wheel);
         EntryWheel(std::string wire);
         char enterChar(char c);
 };

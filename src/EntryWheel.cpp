@@ -6,6 +6,11 @@ EntryWheel::EntryWheel()
         wiring[0] = std::string() + (char)(i + 65) + (char)(i + 65);
 }
 
+EntryWheel::EntryWheel(EntryWheel& wheel)
+{
+    this->wiring = wheel.wiring;
+}
+
 EntryWheel::EntryWheel(std::string wire)
 {
     for(int i = 0; i < 26; i++)
