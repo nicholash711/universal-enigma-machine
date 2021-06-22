@@ -24,7 +24,7 @@ class Rotor
         int reencrypt(int c);
         bool rotate();
         bool setRotorPosition(char pos);
-        bool setRingPosition(char pos);
+        bool setRingSetting(char pos);
         void reset();
         void operator=(Rotor &rotor);
         bool operator==(Rotor &rotor);

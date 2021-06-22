@@ -84,7 +84,7 @@ bool Enigma::setPosition(char c, int i)
 
 bool Enigma::setRing(char c, int i)
 {
-    return rotors[i - 1].setRingPosition(c);
+    return rotors[i - 1].setRingSetting(c);
 }
 
 bool Enigma::clearRotor(int i)

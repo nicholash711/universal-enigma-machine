@@ -98,7 +98,7 @@ bool Rotor::setRotorPosition(char pos)
     return true;
 }
 
-bool Rotor::setRingPosition(char pos)
+bool Rotor::setRingSetting(char pos)
 {
     if(!std::isalpha(pos))
         return false;
@@ -114,7 +114,7 @@ bool Rotor::setRingPosition(char pos)
 
 void Rotor::reset()
 {
-    setRingPosition('A');
+    setRingSetting('A');
     setRotorPosition('A');
 }
 
