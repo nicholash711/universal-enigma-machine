@@ -1,9 +1,10 @@
 #include <appcomponents/RotorSelect.h>
 
-RotorSelect::RotorSelect(wxWindow* parent, const wxPoint &pos=wxDefaultPosition, const wxSize &size=wxDefaultSize) :
+RotorSelect::RotorSelect(wxWindow* parent, const wxPoint &pos=wxDefaultPosition, const wxSize &size=wxDefaultSize, Rotor* rotor) :
     wxComboBox(parent, ID_ROTOR_SELECTOR, "", pos, size)
 {
     this->Bind(wxEVT_COMBOBOX, OnChoose, this);
+    this->rotor = rotor;
 }
 
 RotorSelect::~RotorSelect()
