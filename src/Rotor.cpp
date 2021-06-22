@@ -6,15 +6,17 @@
 Rotor::Rotor()
 {
     name = "";
-    turnover = 0;
+    turnover = "";
     ring = 0;
     wiring.fill("");
 }
 
-Rotor::Rotor(std::string wire, char turn, std::string n)
+Rotor::Rotor(std::string wire, std::string turn, std::string n)
 {
     name = n;
-    turnover = toupper(turn);
+    turnover = turn;
+    for(char& c : turnover)
+        c = toupper(c);
     ring = 'A';
     for(int i = 0; i < 26; i++)
         wiring[i] = std::string() + (char)(i + 65) + (char)toupper(wire[i]);
@@ -25,7 +27,7 @@ std::string Rotor::getName()
     return name;
 }
 
-char Rotor::getTurnover()
+std::string Rotor::getTurnover()
 {
     return turnover;
 }
@@ -84,7 +86,7 @@ int Rotor::reencrypt(int c)
 bool Rotor::rotate()
 {
     std::rotate(wiring.begin(), wiring.begin() + 1, wiring.end());
-    return wiring[25][0] == turnover;
+    return turnover.find(wiring[25][0]) != std::string::npos;
 }
 
 bool Rotor::setRotorPosition(char pos)

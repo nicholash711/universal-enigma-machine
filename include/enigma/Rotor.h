@@ -7,15 +7,15 @@ class Rotor
 {
     private:
         std::array<std::string, 26> wiring;
-        char turnover;
+        std::string turnover;
         char ring;
         std::string name;
 
     public:
         Rotor();
-        Rotor(std::string wire, char turn, std::string n);
+        Rotor(std::string wire, std::string turn, std::string n);
         std::string getName();
-        char getTurnover();
+        std::string getTurnover();
         char getCurrent();
         char getRing();
         int encrypt(char c);
