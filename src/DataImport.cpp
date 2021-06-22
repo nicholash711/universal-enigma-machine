@@ -65,3 +65,19 @@ bool DataImport::hasFour(std::string model)
 {
     return objects[model]->HasMember("rotor 4");
 }
+
+void DataImport::loadRotor(std::string model, std::string rotor, Rotor* r)
+{
+    const json::Value& rotors = objects[model]->operator[]("rotors");
+    for(auto& m : rotors.GetArray())
+    {
+        if(m["rotor"].GetString() == rotor)
+        {
+            r = new Rotor(std::string(m["wiring"].GetString()), std::string(m["turnover"].GetString()), std::string(m["rotor"].GetString()));
+            break;
+        }
+            
+    }
+
+
+}
