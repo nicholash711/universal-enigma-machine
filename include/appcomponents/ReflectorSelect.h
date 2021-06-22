@@ -8,6 +8,7 @@ class ReflectorSelect : public wxComboBox
     public:
         ReflectorSelect(wxWindow* parent, const wxPoint &pos, const wxSize &size);
         ~ReflectorSelect();
+        void loadReflectors();
 
     private:
         void OnChoose(wxCommandEvent& event);
