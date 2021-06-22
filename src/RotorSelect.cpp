@@ -11,9 +11,16 @@ RotorSelect::~RotorSelect()
 
 }
 
-void RotorSelect::loadChoices(std::string selects[])
+void RotorSelect::loadChoices(std::vector<std::string> rotors)
 {
-
+    std::vector<wxString> names;
+    names.resize(rotors.size());
+    std::transform(rotors.begin(), rotors.end(), names.begin(), [](std::string str){
+        wxString name(str);
+        return name;
+    });
+    this->Set(names);
+    this->SetSelection(0);
 }
 
 void RotorSelect::OnChoose(wxCommandEvent& event)

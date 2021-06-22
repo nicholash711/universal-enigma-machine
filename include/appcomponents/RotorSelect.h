@@ -2,13 +2,14 @@
 #define ROTORSELECT_H
 
 #include <wx/wx.h>
+#include <vector>
 
 class RotorSelect : public wxComboBox
 {
     public:
         RotorSelect(wxWindow* parent, const wxPoint &pos, const wxSize &size);
         ~RotorSelect();
-        void loadChoices(std::string selects[]);
+        void loadChoices(std::vector<std::string> rotors);
 
     private:
         void OnChoose(wxCommandEvent& event); 
