@@ -10,6 +10,8 @@ MainFrame::MainFrame() :
     wxStaticText* text = nullptr;
     wxStaticLine* line = nullptr;
 
+    enigma = new Enigma();
+
 
     // Menu Initialization
     wxMenuBar* menuBar = new wxMenuBar();
@@ -32,7 +34,7 @@ MainFrame::MainFrame() :
     {
         const std::string rotor = "Rotor " + std::to_string(i + 1) + ":";
         text = new wxStaticText(this, wxID_ANY, std::string("Rotor " + std::to_string(i + 1) + ":"), wxPoint(10, 62 + 40 * i), wxSize(50, 20));
-        rotors[i] = new RotorSelect(this, wxPoint(60, 60 + 40 * i), wxSize(70, 20));
+        rotors[i] = new RotorSelect(this, wxPoint(60, 60 + 40 * i), wxSize(70, 20), enigma->getRotors()[i]);
         text = new wxStaticText(this, wxID_ANY, "Rotor Position:", wxPoint(150, 62 + 40 * i), wxSize(80, 20));
         spin1[i] = new CharSpin(this, wxPoint(240, 60 + 40 * i), wxSize(40, 20));
         text = new wxStaticText(this, wxID_ANY, "Ring Positon:", wxPoint(300, 62 + 40 * i), wxSize(80, 20));
@@ -57,8 +59,6 @@ MainFrame::MainFrame() :
     wxButton* encode = new wxButton(this, wxID_ANY, "Encode", wxPoint(360, 520), wxSize(80, 20));
 
     encode->Bind(wxEVT_BUTTON, OnPress, this);
-
-    enigma = new Enigma();
 
     //File Input
     file = new DataImport("models.json");
