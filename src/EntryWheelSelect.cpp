@@ -1,6 +1,6 @@
 #include <appcomponents/EntryWheelSelect.h>
 
-EntryWheelSelect::EntryWheelSelect(wxWindow* parent, const wxPoint &pos, const wxSize &size, EntryWheel* wheel) :
+EntryWheelSelect::EntryWheelSelect(wxWindow* parent, EntryWheel* wheel, const wxPoint &pos=wxDefaultPosition, const wxSize &size=wxDefaultSize) :
     wxComboBox(parent, ID_ENTRYWHEEL_SELECTOR, "", pos, size, {}, wxCB_READONLY)
 {
     this->wheel = wheel;

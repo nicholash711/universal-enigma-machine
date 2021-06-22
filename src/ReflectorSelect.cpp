@@ -1,6 +1,6 @@
 #include <appcomponents/ReflectorSelect.h>
 
-ReflectorSelect::ReflectorSelect(wxWindow* parent, const wxPoint &pos=wxDefaultPosition, const wxSize &size=wxDefaultSize, Reflector* ref) :
+ReflectorSelect::ReflectorSelect(wxWindow* parent, Reflector* ref, const wxPoint &pos=wxDefaultPosition, const wxSize &size=wxDefaultSize) :
     wxComboBox(parent, ID_REFLECTOR_SELECTOR, "", pos, size)
 {
     this->reflector = ref;

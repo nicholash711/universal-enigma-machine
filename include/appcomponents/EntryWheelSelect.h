@@ -8,7 +8,7 @@
 class EntryWheelSelect : public wxComboBox
 {
     public:
-        EntryWheelSelect(wxWindow* parent, const wxPoint &pos, const wxSize &size, EntryWheel* wheel);
+        EntryWheelSelect(wxWindow* parent, EntryWheel* wheel, const wxPoint &pos, const wxSize &size);
         ~EntryWheelSelect();
         void loadEntryWheel(std::vector<std::string> wheels);
 

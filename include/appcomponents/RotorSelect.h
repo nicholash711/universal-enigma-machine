@@ -8,7 +8,7 @@
 class RotorSelect : public wxComboBox
 {
     public:
-        RotorSelect(wxWindow* parent, const wxPoint &pos, const wxSize &size, Rotor* rotor);
+        RotorSelect(wxWindow* parent, Rotor* rotor, const wxPoint &pos, const wxSize &size);
         ~RotorSelect();
         void loadChoices(std::vector<std::string> rotors);
 

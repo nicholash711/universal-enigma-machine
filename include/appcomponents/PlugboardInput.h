@@ -7,7 +7,7 @@
 class PlugboardInput : public wxTextCtrl
 {
     public:
-        PlugboardInput(wxWindow* parent, const wxPoint &pos, const wxSize &size, Plugboard* plug);
+        PlugboardInput(wxWindow* parent, Plugboard* plug, const wxPoint &pos, const wxSize &size);
         ~PlugboardInput();
 
     private:
