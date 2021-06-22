@@ -46,6 +46,11 @@
                     "wiring": "FVPJIAOYEDRZXWGCTKUQSBNMHL"
                 }
             ],
+            "entry wheel":
+            {
+                "name": "ETW",
+                "wiring": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            },
             "plugboard": true
         },
         {
@@ -85,6 +90,11 @@
                     "wiring": "MOWJYPUXNDSRAIBFVLKZGQCHET"
                 }
             ],
+            "entry wheel":
+            {
+                "name": "ETW",
+                "wiring": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            },
             "plugboard": true
         },
         {
@@ -114,6 +124,11 @@
                     "wiring": "CIAGSNDRBYTPZFULVHEKOQXWJM"
                 }
             ],
+            "entry wheel":
+            {
+                "name": "ETW",
+                "wiring": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            },
             "plugboard": true
         },
         {
@@ -172,6 +187,11 @@
                     "wiring": "FVPJIAOYEDRZXWGCTKUQSBNMHL"
                 }
             ],
+            "entry wheel":
+            {
+                "name": "ETW",
+                "wiring": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            },
             "plugboard": true
         },
         {
@@ -241,7 +261,309 @@
                     "wiring": "RDOBJNTKVEHMLFCWZAXGYIPSUQ"
                 }
             ],
+            "entry wheel":
+            {
+                "name": "ETW",
+                "wiring": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            },
             "plugboard": true
+        },
+        {
+            "name": "Zahlwerk Enigma A28",
+            "rotors":
+            [
+                {
+                    "rotor": "I",
+                    "wiring": "LPGSZMHAEOQKVXRFYBUTNICJDW",
+                    "turnover": "SUVWZABCEFGIKLOPQ"
+                },
+                {
+                    "rotor": "II",
+                    "wiring": "SLVGBTFXJQOHEWIRZYAMKPCNDU",
+                    "turnover": "STVYZACDFGHKMNQ"
+                },
+                {
+                    "rotor": "III",
+                    "wiring": "CJGDPSHKTURAWZXFMYNQOBVLIE",
+                    "turnover": "UWXAEFHKMNR"
+                }
+            ],
+            "reflectors":
+            [
+                {
+                    "reflector": "UKW",
+                    "wiring": "IMETCGFRAYSQBZXWLHKDVUPOJN"
+                }
+            ],
+            "entry wheel":
+            {
+                "name": "ETW",
+                "wiring": "QWERTZUIOASDFGHJKPYXCVBNML"
+            },
+            "plugboard": false
+        },
+        {
+            "name": "Abwehr Enigma G-312",
+            "rotors":
+            [
+                {
+                    "rotor": "I",
+                    "wiring": "DMTWSILRUYQNKFEJCAZBPGXOHV",
+                    "turnover": "SUVWZABCEFGIKLOPQ"
+                },
+                {
+                    "rotor": "II",
+                    "wiring": "HQZGPJTMOBLNCIFDYAWVEUSRKX",
+                    "turnover": "STVYZACDFGHKMNQ"
+                },
+                {
+                    "rotor": "III",
+                    "wiring": "UQNTLSZFMREHDPXKIBVYGJCWOA",
+                    "turnover": "UWXAEFHKMNR"
+                }
+            ],
+            "reflectors":
+            [
+                {
+                    "reflector": "UKW",
+                    "wiring": "RULQMZJSYGOCETKWDAHNBXPVIF"
+                }
+            ],
+            "entry wheel":
+            {
+                "name": "ETW",
+                "wiring": "QWERTZUIOASDFGHJKPYXCVBNML"
+            },
+            "plugboard": false
+        },
+        {
+            "name": "Abwehr Enigma G-260",
+            "rotors":
+            [
+                {
+                    "rotor": "I",
+                    "wiring": "RCSPBLKQAUMHWYTIFZVGOJNEXD",
+                    "turnover": "SUVWZABCEFGIKLOPQ"
+                },
+                {
+                    "rotor": "II",
+                    "wiring": "WCMIBVPJXAROSGNDLZKEYHUFQT",
+                    "turnover": "STVYZACDFGHKMNQ"
+                },
+                {
+                    "rotor": "III",
+                    "wiring": "FVDHZELSQMAXOKYIWPGCBUJTNR",
+                    "turnover": "UWXAEFHKMNR"
+                }
+            ],
+            "reflectors":
+            [
+                {
+                    "reflector": "UKW",
+                    "wiring": "IMETCGFRAYSQBZXWLHKDVUPOJN"
+                }
+            ],
+            "entry wheel":
+            {
+                "name": "ETW",
+                "wiring": "QWERTZUIOASDFGHJKPYXCVBNML"
+            },
+            "plugboard": false
+        },
+        {
+            "name": "Abwehr Enigma G-111",
+            "rotors":
+            [
+                {
+                    "rotor": "I",
+                    "wiring": "WLRHBQUNDKJCZSEXOTMAGYFPVI",
+                    "turnover": "SUVWZABCEFGIKLOPQ"
+                },
+                {
+                    "rotor": "II",
+                    "wiring": "TFJQAZWMHLCUIXRDYGOEVBNSKP",
+                    "turnover": "STVYZACDFGHKMNQ"
+                },
+                {
+                    "rotor": "V",
+                    "wiring": "QTPIXWVDFRMUSLJOHCANEZKYBG",
+                    "turnover": "SWZFHMQ"
+                }
+            ],
+            "reflectors":
+            [
+                {
+                    "reflector": "UKW",
+                    "wiring": "IMETCGFRAYSQBZXWLHKDVUPOJN"
+                }
+            ],
+            "entry wheel":
+            {
+                "name": "ETW",
+                "wiring": "QWERTZUIOASDFGHJKPYXCVBNML"
+            },
+            "plugboard": false
+        },
+        {
+            "name": "Enigma D / K",
+            "rotors":
+            [
+                {
+                    "rotor": "I",
+                    "wiring": "LPGSZMHAEOQKVXRFYBUTNICJDW",
+                    "turnover": "Y"
+                },
+                {
+                    "rotor": "II",
+                    "wiring": "SLVGBTFXJQOHEWIRZYAMKPCNDU",
+                    "turnover": "E"
+                },
+                {
+                    "rotor": "III",
+                    "wiring": "CJGDPSHKTURAWZXFMYNQOBVLIE",
+                    "turnover": "N"
+                }
+            ],
+            "reflectors":
+            [
+                {
+                    "reflector": "UKW",
+                    "wiring": "IMETCGFRAYSQBZXWLHKDVUPOJN"
+                }
+            ],
+            "entry wheel":
+            {
+                "name": "ETW",
+                "wiring": "QWERTZUIOASDFGHJKPYXCVBNML"
+            },
+            "plugboard": false
+        },
+        {
+            "name": "Enigma Swiss-K",
+            "rotors":
+            [
+                {
+                    "rotor": "I",
+                    "wiring": "PEZUOHXSCVFMTBGLRINQJWAYDK",
+                    "turnover": "Y"
+                },
+                {
+                    "rotor": "II",
+                    "wiring": "ZOUESYDKFWPCIQXHMVBLGNJRAT",
+                    "turnover": "E"
+                },
+                {
+                    "rotor": "III",
+                    "wiring": "EHRVXGAOBQUSIMZFLYNWKTPDJC",
+                    "turnover": "N"
+                }
+            ],
+            "reflectors":
+            [
+                {
+                    "reflector": "UKW",
+                    "wiring": "IMETCGFRAYSQBZXWLHKDVUPOJN"
+                }
+            ],
+            "entry wheel":
+            {
+                "name": "ETW",
+                "wiring": "QWERTZUIOASDFGHJKPYXCVBNML"
+            },
+            "plugboard": false
+        },
+        {
+            "name": "Railway Enigma K",
+            "rotors":
+            [
+                {
+                    "rotor": "I",
+                    "wiring": "JGDQOXUSCAMIFRVTPNEWKBLZYH",
+                    "turnover": "N"
+                },
+                {
+                    "rotor": "II",
+                    "wiring": "NTZPSFBOKMWRCJDIVLAEYUXHGQ",
+                    "turnover": "E"
+                },
+                {
+                    "rotor": "III",
+                    "wiring": "JVIUBHTCDYAKEQZPOSGXNRMWFL",
+                    "turnover": "Y"
+                }
+            ],
+            "reflectors":
+            [
+                {
+                    "reflector": "UKW",
+                    "wiring": "QYHOGNECVPUZTFDJAXWMKISRBL"
+                }
+            ],
+            "entry wheel":
+            {
+                "name": "ETW",
+                "wiring": "QWERTZUIOASDFGHJKPYXCVBNML"
+            },
+            "plugboard": false
+        },
+        {
+            "name": "Enigma T \"Tirpitz\"",
+            "rotors":
+            [
+                {
+                    "rotor": "I",
+                    "wiring": "KPTYUELOCVGRFQDANJMBSWHZXI",
+                    "turnover": "WZEKQ"
+                },
+                {
+                    "rotor": "II",
+                    "wiring": "UPHZLWEQMTDJXCAKSOIGVBYFNR",
+                    "turnover": "WZFLR"
+                },
+                {
+                    "rotor": "III",
+                    "wiring": "QUDLYRFEKONVZAXWHMGPJBSICT",
+                    "turnover": "WZEKQ"
+                },
+                {
+                    "rotor": "IV",
+                    "wiring": "CIWTBKXNRESPFLYDAGVHQUOJZM",
+                    "turnover": "WZFLR"
+                },
+                {
+                    "rotor": "V",
+                    "wiring": "UAXGISNJBVERDYLFZWTPCKOHMQ",
+                    "turnover": "YCFKR"
+                },
+                {
+                    "rotor": "VI",
+                    "wiring": "XFUZGALVHCNYSEWQTDMRBKPIOJ",
+                    "turnover": "XEIMQ"
+                },
+                {
+                    "rotor": "VII",
+                    "wiring": "BJVFTXPLNAYOZIKWGDQERUCHSM",
+                    "turnover": "YCFKR"
+                },
+                {
+                    "rotor": "VIII",
+                    "wiring": "YMTPNZHWKODAJXELUQVGCBISFR",
+                    "turnover": "XEIMQ"
+                }
+            ],
+            "reflectors":
+            [
+                {
+                    "reflector": "UKW",
+                    "wiring": "GEKPBTAUMOCNILJDXZYFHWVQSRs"
+                }
+            ],
+            "entry wheel":
+            {
+                "name": "ETW",
+                "wiring": "KZROUQHYAIGBLWVSTDXFPNMCJE"
+            },
+            "plugboard": false
         }
     ]
 }
