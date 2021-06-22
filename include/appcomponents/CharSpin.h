@@ -15,6 +15,7 @@ class CharSpin : public wxSpinButton
         CharSpin(wxWindow* parent, const wxPoint &pos, const wxSize &size);
         ~CharSpin();
         void setText(char c);
+        void enable(bool enabled);
 
     private:
         void OnTextChange(wxCommandEvent &event);

@@ -28,6 +28,11 @@ void CharSpin::setText(char c)
     text = (char)toupper(c);
 }   
 
+void CharSpin::enable(bool enabled)
+{
+    this->Enable(enabled);
+    textbox->Enable(enabled);
+}
 ////////////////////////////////////////////////////////
 //    Spin Button Events
 ////////////////////////////////////////////////////////
