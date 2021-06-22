@@ -43,11 +43,11 @@ MainFrame::MainFrame() :
     }
 
 
-    // Reflector & Plugboard Controls Creation
+    // Entry Wheel, Reflector, & Plugboard Controls Creation
     text = new wxStaticText(this, wxID_ANY, "Reflector:", wxPoint(440, 62), wxSize(60, 20));
-    reflectors = new ReflectorSelect(this, wxPoint(500, 60), wxSize(290, 20));
+    reflectors = new ReflectorSelect(this, wxPoint(500, 60), wxSize(290, 20), enigma->getReflector());
     text = new wxStaticText(this, wxID_ANY, "Plugboard Setting:", wxPoint(440, 102), wxSize(110, 20));
-    PlugboardInput* plugboardInput = new PlugboardInput(this, wxPoint(550, 100), wxSize(240, 24));
+    PlugboardInput* plugboardInput = new PlugboardInput(this, wxPoint(550, 100), wxSize(240, 24), enigma->getPlugboard());
     line = new wxStaticLine(this, wxID_ANY, wxPoint(10, 210), wxSize(780, 1));
 
 
