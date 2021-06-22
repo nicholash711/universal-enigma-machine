@@ -25,9 +25,9 @@ class DataImport
         const j_Value* getModel(std::string name);
         std::vector<std::string> getRotorList(std::string model);
         std::vector<std::string> getRotor4(std::string name);
-        void loadRotor(std::string name, Rotor* rot); 
-        void loadFour(std::string name, Rotor* rot);
         std::vector<std::string> getReflectorList(std::string model);
+        void loadRotor(std::string name, std::string rotor, Rotor* rot); 
+        void loadFour(std::string name, std::string rotor, Rotor* rot);
         void loadReflector(std::string name, Reflector* ref);
 
         bool hasFour(std::string model);
