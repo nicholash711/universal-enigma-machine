@@ -1,9 +1,7 @@
 #include <appcomponents/MainFrame.h>
 #include <appcomponents/ModelSelect.h>
 #include <wx/statline.h>
-#include <rapidjson/document.h>
 
-namespace json = rapidjson;
 
 MainFrame::MainFrame() : 
     wxFrame(nullptr, wxID_ANY, "Enigma Machine", wxPoint(100, 100), wxSize(800, 600),  wxMINIMIZE_BOX | wxSYSTEM_MENU | wxCAPTION | wxCLOSE_BOX | wxCLIP_CHILDREN)

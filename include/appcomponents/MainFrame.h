@@ -18,15 +18,16 @@ class MainFrame : public wxFrame
 
     private:
         Enigma* enigma = nullptr;
-        DataImport* file = nullptr;
         wxTextCtrl* input = nullptr;
         wxTextCtrl* output = nullptr;
-        std::string model = "";
         RotorSelect* rotors[4];
         CharSpin* spin1[4];
         CharSpin* spin2[4];
         ReflectorSelect* reflectors;
         PlugboardInput* plugboardInput;
+        DataImport* file = nullptr;
+        std::string model = "";
+        
 
         void loadRotors(std::string name);
 
