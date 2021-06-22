@@ -46,8 +46,7 @@
                     "wiring": "FVPJIAOYEDRZXWGCTKUQSBNMHL"
                 }
             ],
-            "plugboard": true,
-            "4 rotors": false
+            "plugboard": true
         },
         {
             "name": "Enigma I \"Norenigma\"",
@@ -86,8 +85,7 @@
                     "wiring": "MOWJYPUXNDSRAIBFVLKZGQCHET"
                 }
             ],
-            "plugboard": true,
-            "4 rotors": false
+            "plugboard": true
         },
         {
             "name": "Enigma I \"Sondermaschine\"",
@@ -116,8 +114,7 @@
                     "wiring": "CIAGSNDRBYTPZFULVHEKOQXWJM"
                 }
             ],
-            "plugboard": true,
-            "4 rotors": false
+            "plugboard": true
         },
         {
             "name": "Enigma M3",
@@ -175,8 +172,7 @@
                     "wiring": "FVPJIAOYEDRZXWGCTKUQSBNMHL"
                 }
             ],
-            "plugboard": true,
-            "4 rotors": false
+            "plugboard": true
         },
         {
             "name": "Enigma M4",
@@ -245,8 +241,7 @@
                     "wiring": "RDOBJNTKVEHMLFCWZAXGYIPSUQ"
                 }
             ],
-            "plugboard": true,
-            "4 rotors": true
+            "plugboard": true
         }
     ]
 }
