@@ -3,17 +3,34 @@
 
 #include <rapidjson/filereadstream.h>
 #include <rapidjson/document.h>
+#include <enigma/Reflector.h>
+#include <enigma/Rotor.h>
 #include <vector>
+#include <map>
+
+namespace json = rapidjson;
+
+typedef json::GenericValue<json::UTF8<char>, json::MemoryPoolAllocator<json::CrtAllocator>> j_Value;
 
 class DataImport
 {
     private:
-        rapidjson::Document json;
+        json::Document doc;
+        std::map<std::string, const json::Value*> objects;
+        // json::GenericValue<json::UTF8<>, json::MemoryPoolAllocator<>>
 
     public:
         DataImport(std::string file);
-        std::vector<std::string> getModels();
+        std::vector<std::string> getModelList();
+        const j_Value* getModel(std::string name);
+        std::vector<std::string> getRotorList(std::string model);
+        std::vector<std::string> getRotor4(std::string name);
+        void loadRotor(std::string name, Rotor* rot); 
+        void loadFour(std::string name, Rotor* rot);
+        std::vector<std::string> getReflectorList(std::string model);
+        void loadReflector(std::string name, Reflector* ref);
 
+        bool hasFour(std::string model);
         
 };
 
