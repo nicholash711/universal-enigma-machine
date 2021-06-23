@@ -22,10 +22,12 @@ class Enigma
 
     public:
         Enigma();
+        Enigma(Enigma& enigma);
         std::array<Rotor*, 3> getRotors();
         Reflector* getReflector();
         Plugboard* getPlugboard();
         EntryWheel* getEntryWheel();
+        std::string print();
         std::string encrypt(std::string mes);
         void setRotor(Rotor& rot, int pos);
         bool setPlug(std::string plug);
