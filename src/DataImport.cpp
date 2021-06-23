@@ -1,7 +1,4 @@
 #include <DataImport.h>
-#include <rapidjson/pointer.h>
-#include <iostream>
-
 
 namespace json = rapidjson;
 
@@ -30,7 +27,7 @@ std::vector<std::string> DataImport::getModelList()
     return names;
 }
 
-const j_Value* DataImport::getModel(std::string name)
+const json::Value* DataImport::getModel(std::string name)
 {
     return objects[name];
 }
@@ -61,11 +58,6 @@ std::vector<std::string> DataImport::getReflectorList(std::string model)
     return reflectors;
 }
 
-bool DataImport::hasFour(std::string model)
-{
-    return objects[model]->HasMember("rotor 4");
-}
-
 void DataImport::loadRotor(std::string model, std::string rotor, Rotor* r)
 {
     const json::Value& rotors = objects[model]->operator[]("rotors");
@@ -76,8 +68,47 @@ void DataImport::loadRotor(std::string model, std::string rotor, Rotor* r)
             r = new Rotor(std::string(m["wiring"].GetString()), std::string(m["turnover"].GetString()), std::string(m["rotor"].GetString()));
             break;
         }
-            
     }
+}
 
+void DataImport::loadRotorFour(std::string model, std::string rotor, Rotor* r)
+{
+    const json::Value& rotors = objects[model]->operator[]("rotor 4");
+    for(auto& m : rotors.GetArray())
+    {
+        if(m["rotor"].GetString() == rotor)
+        {
+            r = new Rotor(std::string(m["wiring"].GetString()), "", std::string(m["rotor"].GetString()));
+            break;
+        }
+    }
+}
 
+void DataImport::loadReflector(std::string model, std::string reflector, Reflector* ref)
+{
+    const json::Value& reflectors = objects[model]->operator[]("reflectors");
+    for(auto& m : reflectors.GetArray())
+    {
+        if(m["reflector"].GetString() == reflector)
+        {
+            ref = new Reflector(std::string(m["wiring"].GetString()), std::string(m["reflector"].GetString()));
+            break;
+        }
+    }
+}
+
+void DataImport::loadEntryWheel(std::string model, EntryWheel* wheel)
+{
+    wheel = new EntryWheel(std::string(objects[model]->operator[]("entry wheel").GetString()));
+    
+}
+
+bool DataImport::hasFour(std::string model)
+{
+    return objects[model]->HasMember("rotor 4");
+}
+
+bool DataImport::hasPlugboard(std::string model)
+{
+    return objects[model]->operator[]("plugboard").GetBool();
 }
