@@ -11,6 +11,7 @@ class Plugboard
     public:
         Plugboard();
         Plugboard(Plugboard& plug);
+        std::string getPlugs();
         bool addPlug(std::string pair);
         bool removePlug(char c);
         char encrypt(char c);

@@ -13,6 +13,16 @@ Plugboard::Plugboard(Plugboard& plug)
     this->plugs = plug.plugs;
 }
 
+std::string Plugboard::getPlugs()
+{
+    std::string str = std::string();
+
+    for(int i = 0; i < 26; i++)
+        if(str.find(i + 65) == -1 && plugboard[i] != 0)
+            str += std::string() + (char)(i + 65) + plugboard[i] + " ";
+    return str;
+}
+
 bool Plugboard::addPlug(std::string pair)
 {   
     if(plugs == 10)
