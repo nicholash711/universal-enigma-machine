@@ -16,7 +16,7 @@ MainFrame::MainFrame() :
     // Menu Initialization
     wxMenuBar* menuBar = new wxMenuBar();
     wxMenu* menuFile = new wxMenu();
-    menuFile->Append(10, "File... \tCtrl+H", "Click Me!");
+    menuFile->Append(10, "Settings... \tCtrl+H", "Show Enigma Settings");
     menuBar->Append(menuFile, "&File");
     SetMenuBar(menuBar);
 
@@ -47,7 +47,7 @@ MainFrame::MainFrame() :
     text = new wxStaticText(this, wxID_ANY, "Reflector:", wxPoint(440, 62), wxSize(60, 20));
     reflectors = new ReflectorSelect(this, enigma->getReflector(), wxPoint(500, 60), wxSize(290, 20));
     text = new wxStaticText(this, wxID_ANY, "Plugboard Setting:", wxPoint(440, 102), wxSize(110, 20));
-    PlugboardInput* plugboardInput = new PlugboardInput(this, enigma->getPlugboard(), wxPoint(550, 100), wxSize(240, 24));
+    plugboardInput = new PlugboardInput(this, enigma->getPlugboard(), wxPoint(550, 100), wxSize(240, 24));
     line = new wxStaticLine(this, wxID_ANY, wxPoint(10, 210), wxSize(780, 1));
 
 
@@ -74,8 +74,11 @@ MainFrame::~MainFrame()
 void MainFrame::loadComponents(std::string name)
 {
     model = name;
-    loadRotors(name);
-    reflectors->loadReflectors(file->getReflectorList(name));
+    loadRotors(model);
+    reflectors->loadReflectors(file->getReflectorList(model));
+    file->loadEntryWheel(model, enigma->getEntryWheel());
+    plugboardInput->ChangeValue("");
+    plugboardInput->Enable(file->hasPlugboard(model));
 }
 
 void MainFrame::loadRotors(std::string name)
@@ -112,7 +115,8 @@ void MainFrame::OnPress(wxCommandEvent& event)
 
 void MainFrame::PressFile(wxCommandEvent& event)
 {
-    std::cout << "File Pressed" << std::endl;  
+    std::cout << "Model: " << model << std::endl;
+    std::cout << enigma->print() << std::endl;  
 }
 
 void MainFrame::OnModelChoose(wxCommandEvent& event)
