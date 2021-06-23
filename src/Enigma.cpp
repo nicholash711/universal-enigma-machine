@@ -10,6 +10,15 @@ Enigma::Enigma()
     entry = nullptr;
 }
 
+Enigma::Enigma(Enigma& enigma)
+{
+    rotors = enigma.rotors;
+    rotor4 = enigma.rotor4;
+    plugboard = enigma.plugboard;
+    reflector = enigma.reflector;
+    entry = enigma.entry;
+}
+
 char Enigma::rotorEncryption(char c)
 {
     int encrypted = rotors[0]->encrypt(rotors[1]->encrypt(rotors[2]->encrypt(c)));
@@ -43,6 +52,33 @@ Plugboard* Enigma::getPlugboard()
 EntryWheel* Enigma::getEntryWheel()
 {
     return entry;
+}
+
+std::string Enigma::print()
+{
+    std::string out = std::string();
+    out = "Plugboard: " + plugboard->getPlugs() + "\n";
+    out += "Rotors: ";
+    if(rotor4 != nullptr)
+        out += rotor4->getName() + " ";
+    for(Rotor* rot : rotors)
+        if(rot != nullptr)
+            out += rot->getName() + " ";
+    out += "\nRotor Positions: ";
+    if(rotor4 != nullptr)
+        out += rotor4->getName() + " ";
+    for(Rotor* rot : rotors)
+        if(rot != nullptr)
+            out += rot->getCurrent() + " ";
+    out += "\nRing Settings: ";
+    if(rotor4 != nullptr)
+        out += rotor4->getName() + " ";
+    for(Rotor* rot : rotors)
+        if(rot != nullptr)
+            out += rot->getRing() + " ";
+    if(reflector != nullptr)
+        out += "Reflector: " + reflector->getName() + "\n";
+    return out;
 }
 
 char Enigma::encryptChar(char c)
