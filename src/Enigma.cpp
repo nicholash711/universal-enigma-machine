@@ -58,24 +58,24 @@ std::string Enigma::print()
 {
     std::string out = std::string();
     out = "Plugboard: " + plugboard->getPlugs() + "\n";
-    out += "Rotors: ";
+    out += "Rotors:";
     if(rotor4 != nullptr)
-        out += rotor4->getName() + " ";
+        out += " " + rotor4->getName();
     for(Rotor* rot : rotors)
         if(rot != nullptr)
-            out += rot->getName() + " ";
+            out += " " + rot->getName();
     out += "\nRotor Positions: ";
     if(rotor4 != nullptr)
-        out += rotor4->getName() + " ";
+        out += std::string() + rotor4->getCurrent() + " ";
     for(Rotor* rot : rotors)
         if(rot != nullptr)
-            out += rot->getCurrent() + " ";
+            out += std::string() + rot->getCurrent() + " ";
     out += "\nRing Settings: ";
     if(rotor4 != nullptr)
-        out += rotor4->getName() + " ";
+        out += std::string() + rotor4->getRing() + " ";
     for(Rotor* rot : rotors)
         if(rot != nullptr)
-            out += rot->getRing() + " ";
+            out += std::string() + rot->getRing() + " ";
     if(reflector != nullptr)
         out += "Reflector: " + reflector->getName() + "\n";
     return out;
