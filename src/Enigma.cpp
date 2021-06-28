@@ -139,19 +139,19 @@ void Enigma::setEntryWheel(std::string wiring)
 
 bool Enigma::setPosition(char c, int i)
 {
-    return rotors[i - 1]->setRotorPosition(c);
+    return rotors[i]->setRotorPosition(c);
 }
 
 bool Enigma::setRing(char c, int i)
 {
-    return rotors[i - 1]->setRingSetting(c);
+    return rotors[i]->setRingSetting(c);
 }
 
 bool Enigma::clearRotor(int i)
 {
-    if(i < 1 || i > 3)
+    if(i < 0 || i > 2)
         return false;
-    rotors[i - 1] = new Rotor();
+    rotors[i] = new Rotor();
     return true;
 }
 
