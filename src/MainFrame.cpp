@@ -37,9 +37,9 @@ MainFrame::MainFrame() :
         text = new wxStaticText(this, wxID_ANY, std::string("Rotor " + std::to_string(i + 1) + ":"), wxPoint(10, 62 + 40 * i), wxSize(50, 20));
         rotors[i] = new RotorSelect(this, i, wxPoint(60, 60 + 40 * i), wxSize(70, 20));
         text = new wxStaticText(this, wxID_ANY, "Rotor Position:", wxPoint(150, 62 + 40 * i), wxSize(80, 20));
-        spin1[i] = new CharSpin(this, wxPoint(240, 60 + 40 * i), wxSize(40, 20));
+        rotSpin[i] = new CharSpin(this, i, wxPoint(240, 60 + 40 * i), wxSize(40, 20));
         text = new wxStaticText(this, wxID_ANY, "Ring Positon:", wxPoint(300, 62 + 40 * i), wxSize(80, 20));
-        spin2[i] = new CharSpin(this, wxPoint(380, 60 + 40 * i), wxSize(40, 20));
+        ringSpin[i] = new CharSpin(this, i, wxPoint(380, 60 + 40 * i), wxSize(40, 20));
 
     }
 
@@ -97,19 +97,6 @@ void MainFrame::loadComponents(std::string name)
     plugboardInput->Enable(file->hasPlugboard(model));
 }
 
-// void MainFrame::OnRotorChoose(std::string name, Rotor* rotor)
-// {
-
-//     std::cout << "loadRotor" << std::endl;
-//     file->loadRotor(this->model, name, rotor);
-//     std::cout << rotor << std::endl;
-// }
-
-void MainFrame::OnReflectorChoose(std::string name, Reflector& ref)
-{
-    // file->loadReflector(model, name, *ref);
-}
-
 void MainFrame::OnPlugboardUpdate(std::string plugs, Plugboard& plugboard)
 {
 
@@ -120,14 +107,14 @@ void MainFrame::loadRotors(std::string name)
     for(int i = 0; i < 4; i++)
     {
         rotors[i]->Clear();
-        spin1[i]->setText('A');
-        spin2[i]->setText('A');
+        rotSpin[i]->setText('A');
+        ringSpin[i]->setText('A');
     }
     if(file->hasFour(name))
     {
         rotors[3]->Enable(true);
-        spin1[3]->enable(true);
-        spin2[3]->enable(true);
+        rotSpin[3]->enable(true);
+        ringSpin[3]->enable(true);
         for(int i = 1; i < 4; i++)
             rotors[i]->loadChoices(file->getRotorList(name));
         rotors[0]->loadChoices(file->getRotor4(name));
@@ -137,8 +124,8 @@ void MainFrame::loadRotors(std::string name)
         for(int i = 0; i < 3; i++)
             rotors[i]->loadChoices(file->getRotorList(name));
         rotors[3]->Enable(false);
-        spin1[3]->enable(false);
-        spin2[3]->enable(false);
+        rotSpin[3]->enable(false);
+        ringSpin[3]->enable(false);
     }
 }
 
@@ -158,4 +145,24 @@ void MainFrame::OnModelChoose(wxCommandEvent& event)
     ModelSelect* menu = (ModelSelect*)event.GetEventObject();
     if(model != std::string(menu->GetValue()))
         loadComponents(std::string(menu->GetValue()));
+}
+
+void MainFrame::OnIdleEvent(wxIdleEvent& event)
+{
+    if(file->hasFour(model))
+        for(int i = 0; i < 4; i++)
+        {
+            if(rotSpin[i]->getText() != enigma->getRotors()[i]->getCurrent())
+                enigma->setPosition(rotSpin[i]->getText(), i);
+            if(ringSpin[i]->getText() != enigma->getRotors()[i]->getRing())
+                enigma->setRing(ringSpin[i]->getText(), i);
+        }
+    else
+        for(int i = 0; i < 3; i++)
+        {
+            if(rotSpin[i]->getText() != enigma->getRotors()[i]->getCurrent())
+                enigma->setPosition(rotSpin[i]->getText(), i);
+            if(ringSpin[i]->getText() != enigma->getRotors()[i]->getRing())
+                enigma->setRing(ringSpin[i]->getText(), i);
+        }
 }
