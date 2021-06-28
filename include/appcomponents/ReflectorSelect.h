@@ -8,12 +8,10 @@
 class ReflectorSelect : public wxComboBox
 {
     public:
-        ReflectorSelect(wxWindow* parent, Reflector* ref, const wxPoint &pos, const wxSize &size);
-        ~ReflectorSelect();
+        ReflectorSelect(wxWindow* parent, const wxPoint &pos, const wxSize &size);
         void loadReflectors(std::vector<std::string> reflectors);
 
     private:
-        Reflector* reflector;
         void OnChoose(wxCommandEvent& event);
 };
 enum
