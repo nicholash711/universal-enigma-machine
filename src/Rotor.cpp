@@ -128,14 +128,6 @@ void Rotor::reset()
     setRotorPosition('A');
 }
 
-// void Rotor::operator=(Rotor &rotor)
-// {
-//     name = rotor.name;
-//     turnover = rotor.turnover;
-//     wiring = rotor.wiring;
-//     ring = rotor.ring;
-// }
-
 bool Rotor::operator==(Rotor &rotor)
 {
     std::array<std::string, 26> temp = rotor.wiring;
