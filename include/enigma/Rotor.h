@@ -27,7 +27,7 @@ class Rotor
         bool setRotorPosition(char pos);
         bool setRingSetting(char pos);
         void reset();
-        void operator=(Rotor &rotor);
+        // void operator=(Rotor& rotor);
         bool operator==(Rotor &rotor);
         friend std::ostream& operator<<(std::ostream &out, const Rotor &rotor);
 };

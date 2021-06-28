@@ -128,13 +128,13 @@ void Rotor::reset()
     setRotorPosition('A');
 }
 
-void Rotor::operator=(Rotor &rotor)
-{
-    name = rotor.name;
-    turnover = rotor.turnover;
-    wiring = rotor.wiring;
-    ring = rotor.ring;
-}
+// void Rotor::operator=(Rotor &rotor)
+// {
+//     name = rotor.name;
+//     turnover = rotor.turnover;
+//     wiring = rotor.wiring;
+//     ring = rotor.ring;
+// }
 
 bool Rotor::operator==(Rotor &rotor)
 {
