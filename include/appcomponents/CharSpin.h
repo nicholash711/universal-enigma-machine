@@ -10,11 +10,13 @@ class CharSpin : public wxSpinButton
         wxTextCtrl* textbox = nullptr;
         char text = 0;
         bool gotFocus = false;
+        int rotor = -1;
 
     public:
-        CharSpin(wxWindow* parent, const wxPoint &pos, const wxSize &size);
+        CharSpin(wxWindow* parent, int n, const wxPoint &pos, const wxSize &size);
         ~CharSpin();
         void setText(char c);
+        char getText();
         void enable(bool enabled);
 
     private:
