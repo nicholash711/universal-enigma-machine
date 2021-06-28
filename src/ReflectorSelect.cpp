@@ -4,6 +4,7 @@
 ReflectorSelect::ReflectorSelect(wxWindow* parent, const wxPoint &pos=wxDefaultPosition, const wxSize &size=wxDefaultSize) :
     wxComboBox(parent, ID_REFLECTOR_SELECTOR, "", pos, size)
 {
+    this->Bind(wxEVT_COMBOBOX, OnChoose, this);
 }
 
 ReflectorSelect::~ReflectorSelect()
@@ -21,6 +22,14 @@ void ReflectorSelect::loadReflectors(std::vector<std::string> reflectors)
     });
     this->Set(names);
     this->SetSelection(0);
+    MainFrame* frame = wxDynamicCast(GetParent(), MainFrame);
+    std::array<std::string, 2> values = frame->getFile()->loadReflector(std::string(GetValue()));
+    Reflector temp(values[0], values[1]);
+    frame->getEnigma()->setReflector(temp);
+}
+
+void ReflectorSelect::OnChoose(wxCommandEvent& event)
+{
     MainFrame* frame = wxDynamicCast(GetParent(), MainFrame);
     std::array<std::string, 2> values = frame->getFile()->loadReflector(std::string(GetValue()));
     Reflector temp(values[0], values[1]);
