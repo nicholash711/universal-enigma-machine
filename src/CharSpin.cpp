@@ -1,6 +1,6 @@
 #include <appcomponents/CharSpin.h>
 
-CharSpin::CharSpin(wxWindow* parent, const wxPoint &pos=wxDefaultPosition, const wxSize &size=wxDefaultSize) :
+CharSpin::CharSpin(wxWindow* parent, int n, const wxPoint &pos=wxDefaultPosition, const wxSize &size=wxDefaultSize) :
     wxSpinButton(parent, ID_ARROWS, wxPoint(pos.x + size.x - 15, pos.y), wxSize(15, size.y), wxSP_WRAP)
 {
     textbox = new wxTextCtrl(parent, ID_TEXT_BOX, "", pos, wxSize(size.x - 15, size.y), wxTE_PROCESS_ENTER);
@@ -16,6 +16,8 @@ CharSpin::CharSpin(wxWindow* parent, const wxPoint &pos=wxDefaultPosition, const
     textbox->Bind(wxEVT_LEFT_DOWN, OnLeftClick, this);
     textbox->Bind(wxEVT_IDLE, OnIdle, this);
     textbox->Bind(wxEVT_KILL_FOCUS, OnLoseFocus, this);
+
+    rotor = n;
 }
 
 CharSpin::~CharSpin()
@@ -26,7 +28,12 @@ void CharSpin::setText(char c)
 {
     textbox->ChangeValue((char)toupper(c));
     text = (char)toupper(c);
-}   
+}
+
+char CharSpin::getText()
+{
+    return text;
+}
 
 void CharSpin::enable(bool enabled)
 {
