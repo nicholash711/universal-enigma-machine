@@ -9,6 +9,7 @@ class ReflectorSelect : public wxComboBox
 {
     public:
         ReflectorSelect(wxWindow* parent, const wxPoint &pos, const wxSize &size);
+        ~ReflectorSelect();
         void loadReflectors(std::vector<std::string> reflectors);
 
     private:
