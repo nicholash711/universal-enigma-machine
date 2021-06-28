@@ -30,9 +30,9 @@ class DataImport
         std::vector<std::string> getRotor4(std::string name);
         std::vector<std::string> getReflectorList(std::string model);
         std::array<std::string, 3> loadRotor(std::string rotor); 
-        void loadRotorFour(std::string model, std::string rotor, Rotor* rot);
-        void loadReflector(std::string model, std::string reflector, Reflector* ref);
-        void loadEntryWheel(std::string model, EntryWheel* wheel);
+        std::array<std::string, 2> loadRotorFour(std::string rotor);
+        std::array<std::string, 2> loadReflector(std::string reflector);
+        std::string loadEntryWheel(std::string model);
 
         bool hasFour(std::string model);
         bool hasPlugboard(std::string model);        

@@ -69,39 +69,46 @@ std::array<std::string, 3> DataImport::loadRotor(std::string name)
     std::array<std::string, 3> rotor;
     for(auto& m : rotors.GetArray())
         if(m["rotor"].GetString() == name)
+        {
             rotor = {std::string(m["wiring"].GetString()), std::string(m["turnover"].GetString()), std::string(m["rotor"].GetString())};
+            break;
+        }
     return rotor;
 }
 
-void DataImport::loadRotorFour(std::string model, std::string rotor, Rotor* r)
+std::array<std::string, 2> DataImport::loadRotorFour(std::string name)
 {
+    std::string model = wxDynamicCast(parent, MainFrame)->getModel();
     const json::Value& rotors = objects[model]->operator[]("rotor 4");
+    std::array<std::string, 2> rotor;
     for(auto& m : rotors.GetArray())
-    {
-        if(m["rotor"].GetString() == rotor)
+        if(m["rotor"].GetString() == name)
         {
-            r = new Rotor(std::string(m["wiring"].GetString()), "", std::string(m["rotor"].GetString()));
+            rotor = {std::string(m["wiring"].GetString()), std::string(m["rotor"].GetString())};
             break;
         }
-    }
+    return rotor;
 }
 
-void DataImport::loadReflector(std::string model, std::string reflector, Reflector* ref)
+std::array<std::string, 2> DataImport::loadReflector(std::string name)
 {
+    std::string model = wxDynamicCast(parent, MainFrame)->getModel();
     const json::Value& reflectors = objects[model]->operator[]("reflectors");
+    std::array<std::string, 2> reflector;
     for(auto& m : reflectors.GetArray())
     {
-        if(m["reflector"].GetString() == reflector)
+        if(m["reflector"].GetString() == name)
         {
-            ref = new Reflector(std::string(m["wiring"].GetString()), std::string(m["reflector"].GetString()));
+            reflector = {std::string(m["wiring"].GetString()), std::string(m["reflector"].GetString())};
             break;
         }
     }
+    return reflector;
 }
 
-void DataImport::loadEntryWheel(std::string model, EntryWheel* wheel)
+std::string DataImport::loadEntryWheel(std::string model)
 {
-    wheel = new EntryWheel(std::string(objects[model]->operator[]("entry wheel").GetString()));
+    return std::string(objects[model]->operator[]("entry wheel").GetString());
     
 }
 
