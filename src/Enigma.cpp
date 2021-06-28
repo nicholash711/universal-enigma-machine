@@ -77,7 +77,7 @@ std::string Enigma::print()
         if(rot != nullptr)
             out += std::string() + rot->getRing() + " ";
     if(reflector != nullptr)
-        out += "Reflector: " + reflector->getName() + "\n";
+        out += "\nReflector: " + reflector->getName() + "\n";
     return out;
 }
 
