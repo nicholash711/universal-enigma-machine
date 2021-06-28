@@ -2,6 +2,7 @@
 #include <appcomponents/ModelSelect.h>
 #include <wx/statline.h>
 
+wxIMPLEMENT_DYNAMIC_CLASS(MainFrame, wxWindow)
 
 MainFrame::MainFrame() : 
     wxFrame(nullptr, wxID_ANY, "Enigma Machine", wxPoint(100, 100), wxSize(800, 600),  wxMINIMIZE_BOX | wxSYSTEM_MENU | wxCAPTION | wxCLOSE_BOX | wxCLIP_CHILDREN)
@@ -34,7 +35,7 @@ MainFrame::MainFrame() :
     {
         const std::string rotor = "Rotor " + std::to_string(i + 1) + ":";
         text = new wxStaticText(this, wxID_ANY, std::string("Rotor " + std::to_string(i + 1) + ":"), wxPoint(10, 62 + 40 * i), wxSize(50, 20));
-        rotors[i] = new RotorSelect(this, enigma->getRotors()[i], wxPoint(60, 60 + 40 * i), wxSize(70, 20));
+        rotors[i] = new RotorSelect(this, i, wxPoint(60, 60 + 40 * i), wxSize(70, 20));
         text = new wxStaticText(this, wxID_ANY, "Rotor Position:", wxPoint(150, 62 + 40 * i), wxSize(80, 20));
         spin1[i] = new CharSpin(this, wxPoint(240, 60 + 40 * i), wxSize(40, 20));
         text = new wxStaticText(this, wxID_ANY, "Ring Positon:", wxPoint(300, 62 + 40 * i), wxSize(80, 20));
@@ -61,7 +62,7 @@ MainFrame::MainFrame() :
     encode->Bind(wxEVT_BUTTON, OnPress, this);
 
     //File Input
-    file = new DataImport("models.json");
+    file = new DataImport(this, "models.json");
     menu->loadModels(file->getModelList());
     menu->Bind(wxEVT_COMBOBOX, OnModelChoose, this);
 
@@ -69,6 +70,21 @@ MainFrame::MainFrame() :
 
 MainFrame::~MainFrame()
 {
+}
+
+std::string MainFrame::getModel()
+{
+    return model;
+}
+
+DataImport* MainFrame::getFile()
+{
+    return file;
+}
+
+Enigma* MainFrame::getEnigma()
+{
+    return enigma;
 }
 
 void MainFrame::loadComponents(std::string name)
@@ -79,6 +95,24 @@ void MainFrame::loadComponents(std::string name)
     file->loadEntryWheel(model, enigma->getEntryWheel());
     plugboardInput->ChangeValue("");
     plugboardInput->Enable(file->hasPlugboard(model));
+}
+
+// void MainFrame::OnRotorChoose(std::string name, Rotor* rotor)
+// {
+
+//     std::cout << "loadRotor" << std::endl;
+//     file->loadRotor(this->model, name, rotor);
+//     std::cout << rotor << std::endl;
+// }
+
+void MainFrame::OnReflectorChoose(std::string name, Reflector& ref)
+{
+    // file->loadReflector(model, name, *ref);
+}
+
+void MainFrame::OnPlugboardUpdate(std::string plugs, Plugboard& plugboard)
+{
+
 }
 
 void MainFrame::loadRotors(std::string name)

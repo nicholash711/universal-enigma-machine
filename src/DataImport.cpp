@@ -1,9 +1,13 @@
 #include <DataImport.h>
+#include <appcomponents/MainFrame.h>
+#include <iostream>
 
 namespace json = rapidjson;
 
-DataImport::DataImport(std::string file="")
+DataImport::DataImport(wxWindow* parent, std::string file="")
 {
+    this->parent = parent;
+
     char loc[] = "data/";
     std::strcat(loc, file.c_str());
     FILE* f = fopen(loc, "rb");
@@ -58,17 +62,15 @@ std::vector<std::string> DataImport::getReflectorList(std::string model)
     return reflectors;
 }
 
-void DataImport::loadRotor(std::string model, std::string rotor, Rotor* r)
+std::array<std::string, 3> DataImport::loadRotor(std::string name)
 {
+    std::string model = wxDynamicCast(parent, MainFrame)->getModel();
     const json::Value& rotors = objects[model]->operator[]("rotors");
+    std::array<std::string, 3> rotor;
     for(auto& m : rotors.GetArray())
-    {
-        if(m["rotor"].GetString() == rotor)
-        {
-            r = new Rotor(std::string(m["wiring"].GetString()), std::string(m["turnover"].GetString()), std::string(m["rotor"].GetString()));
-            break;
-        }
-    }
+        if(m["rotor"].GetString() == name)
+            rotor = {std::string(m["wiring"].GetString()), std::string(m["turnover"].GetString()), std::string(m["rotor"].GetString())};
+    return rotor;
 }
 
 void DataImport::loadRotorFour(std::string model, std::string rotor, Rotor* r)

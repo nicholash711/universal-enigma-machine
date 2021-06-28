@@ -8,12 +8,12 @@
 class RotorSelect : public wxComboBox
 {
     public:
-        RotorSelect(wxWindow* parent, Rotor* rotor, const wxPoint &pos, const wxSize &size);
+        RotorSelect(wxWindow* parent, int i, const wxPoint &pos, const wxSize &size);
         ~RotorSelect();
         void loadChoices(std::vector<std::string> rotors);
 
     private:
-        Rotor* rotor = nullptr;
+        int rotor;
         void OnChoose(wxCommandEvent& event); 
 };
 enum
