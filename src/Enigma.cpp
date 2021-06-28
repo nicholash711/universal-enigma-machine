@@ -110,7 +110,8 @@ std::string Enigma::encrypt(std::string mes)
 
 void Enigma::setRotor(Rotor& rot, int i)
 {
-    rotors[i - 1] = new Rotor(rot);
+    delete this->rotors[i];
+    rotors[i] = new Rotor(rot);
 }
 
 bool Enigma::setPlug(std::string plug)
@@ -120,12 +121,20 @@ bool Enigma::setPlug(std::string plug)
 
 void Enigma::setReflector(Reflector& ref)
 {
+    delete this->reflector;
     reflector = new Reflector(ref);
 }
 
 void Enigma::setEntryWheel(EntryWheel& entry)
 {
+    delete this->entry;
     this->entry = new EntryWheel(entry);
+}
+
+void Enigma::setEntryWheel(std::string wiring)
+{
+    delete this->entry;
+    this->entry = new EntryWheel(wiring);
 }
 
 bool Enigma::setPosition(char c, int i)

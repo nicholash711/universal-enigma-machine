@@ -33,6 +33,7 @@ class Enigma
         bool setPlug(std::string plug);
         void setReflector(Reflector& ref);
         void setEntryWheel(EntryWheel& entry);
+        void setEntryWheel(std::string wiring);
         bool setPosition(char c, int pos);
         bool setRing(char c, int pos);
         bool clearRotor(int i);
