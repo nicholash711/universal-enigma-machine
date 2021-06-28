@@ -5,7 +5,7 @@ RotorSelect::RotorSelect(wxWindow* parent, int i, const wxPoint &pos=wxDefaultPo
     wxComboBox(parent, ID_ROTOR_SELECTOR, "", pos, size)
 {
     this->Bind(wxEVT_COMBOBOX, OnChoose, this);
-    rotor = i + 1;
+    rotor = i;
 }
 
 RotorSelect::~RotorSelect()
