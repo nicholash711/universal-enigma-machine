@@ -2,6 +2,7 @@
 #define ENIGMA_H
 
 #include <array>
+#include <vector>
 #include <enigma/Rotor.h>
 #include <enigma/Reflector.h>
 #include <enigma/Plugboard.h>
@@ -27,9 +28,10 @@ class Enigma
         Reflector* getReflector();
         Plugboard* getPlugboard();
         EntryWheel* getEntryWheel();
-        std::string print();
         std::string encrypt(std::string mes);
-        void setRotor(Rotor& rot, int pos);
+        void setRotor(Rotor& rot, int i);
+        void setRotor(std::string wiring, std::string turnover, std::string name, int i);
+        bool setPlugs(std::vector<std::string> plugs);
         bool setPlug(std::string plug);
         void setReflector(Reflector& ref);
         void setEntryWheel(EntryWheel& entry);

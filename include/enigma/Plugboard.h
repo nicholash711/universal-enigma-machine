@@ -8,6 +8,8 @@ class Plugboard
     private:
         std::array<char, 26> plugboard;
         int plugs;
+
+        bool isAlpha(std::string str);
     public:
         Plugboard();
         Plugboard(Plugboard& plug);
@@ -18,6 +20,8 @@ class Plugboard
         void clear();
         void operator=(Plugboard &plugboard);
         friend std::ostream& operator<<(std::ostream &out, Plugboard &plugboard);
+
+        void showArray();
 };
 
 #endif

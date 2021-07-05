@@ -3,11 +3,12 @@
 
 Enigma::Enigma()
 {
-    rotors.fill(nullptr);
-    rotor4 = nullptr;
+    for(int i = 0; i < 3; i++)
+        rotors[i] = new Rotor();
+    rotor4 = new Rotor();
     plugboard = new Plugboard();
-    reflector = nullptr;
-    entry = nullptr;
+    reflector = new Reflector();
+    entry = new EntryWheel();
 }
 
 Enigma::Enigma(Enigma& enigma)
@@ -54,33 +55,6 @@ EntryWheel* Enigma::getEntryWheel()
     return entry;
 }
 
-std::string Enigma::print()
-{
-    std::string out = std::string();
-    out = "Plugboard: " + plugboard->getPlugs() + "\n";
-    out += "Rotors:";
-    if(rotor4 != nullptr)
-        out += " " + rotor4->getName();
-    for(Rotor* rot : rotors)
-        if(rot != nullptr)
-            out += " " + rot->getName();
-    out += "\nRotor Positions: ";
-    if(rotor4 != nullptr)
-        out += std::string() + rotor4->getCurrent() + " ";
-    for(Rotor* rot : rotors)
-        if(rot != nullptr)
-            out += std::string() + rot->getCurrent() + " ";
-    out += "\nRing Settings: ";
-    if(rotor4 != nullptr)
-        out += std::string() + rotor4->getRing() + " ";
-    for(Rotor* rot : rotors)
-        if(rot != nullptr)
-            out += std::string() + rot->getRing() + " ";
-    if(reflector != nullptr)
-        out += "\nReflector: " + reflector->getName() + "\n";
-    return out;
-}
-
 char Enigma::encryptChar(char c)
 {
     rotateRotors();
@@ -114,6 +88,25 @@ void Enigma::setRotor(Rotor& rot, int i)
     rotors[i] = new Rotor(rot);
 }
 
+void Enigma::setRotor(std::string wiring, std::string turnover, std::string name, int i)
+{
+    delete this->rotors[i];
+    rotors[i] = new Rotor(wiring, turnover, name);
+}
+bool Enigma::setPlugs(std::vector<std::string> plugs)
+{
+    plugboard->clear();
+    for(std::string plug : plugs)
+    {
+        if(!plugboard->addPlug(plug))
+        {
+            plugboard->clear();
+            return false;
+        }
+    }
+    return true;
+}
+
 bool Enigma::setPlug(std::string plug)
 {
     return plugboard->addPlug(plug);
@@ -139,6 +132,8 @@ void Enigma::setEntryWheel(std::string wiring)
 
 bool Enigma::setPosition(char c, int i)
 {
+    //std::cout << "setting position" << std::endl;
+    //std::cout << rotors[i]->getTurnover() << std::endl;
     return rotors[i]->setRotorPosition(c);
 }
 
@@ -157,7 +152,7 @@ bool Enigma::clearRotor(int i)
 
 std::ostream& operator<<(std::ostream &out, Enigma &enigma)
 {
-    out << "Plugboard: " << enigma.plugboard <<"\n";
+    out << "Plugboard: " << *(enigma.plugboard) <<"\n";
     out << "Rotors: " << enigma.rotors[0]->getName() << " " << enigma.rotors[1]->getName() << " " << enigma.rotors[2]->getName() << "\n";
     out << "Rotor Settings: " << enigma.rotors[0]->getCurrent() << " " << enigma.rotors[1]->getCurrent() << " " << enigma.rotors[2]->getCurrent() << "\n";
     out << "Ring Settings: " << enigma.rotors[0]->getRing() << " " << enigma.rotors[1]->getRing() << " " << enigma.rotors[2]->getRing() << "\n";

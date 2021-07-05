@@ -13,6 +13,14 @@ Plugboard::Plugboard(Plugboard& plug)
     this->plugs = plug.plugs;
 }
 
+bool Plugboard::isAlpha(std::string str)
+{
+    for(char c : str)
+        if(!isalpha(c))
+            return false;
+    return true;
+}
+
 std::string Plugboard::getPlugs()
 {
     std::string str = std::string();
@@ -25,7 +33,7 @@ std::string Plugboard::getPlugs()
 
 bool Plugboard::addPlug(std::string pair)
 {   
-    if(plugs == 10)
+    if(plugs == 10 || pair.size() != 2 || !isAlpha(pair))
         return false;
     char first = toupper(pair[0]), second = toupper(pair[1]);
     if(plugboard[first - 65] == plugboard[second - 65])
@@ -65,6 +73,7 @@ char Plugboard::encrypt(char c)
 void Plugboard::clear()
 {
     plugboard.fill(0);
+    plugs = 0;
 }
 
 void Plugboard::operator=(Plugboard &plugboard)
@@ -81,4 +90,10 @@ std::ostream& operator<<(std::ostream &out, Plugboard &plugboard)
             str += std::string() + (char)(i + 65) + plugboard.plugboard[i] + " ";
     out << str;
     return out;
+}
+
+void Plugboard::showArray()
+{
+    for(int i = 0; i < 26; i++)
+        std::cout << (char)(i + 65) << " - " << (int)plugboard[i] << std::endl;
 }

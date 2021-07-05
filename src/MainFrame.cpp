@@ -17,11 +17,13 @@ MainFrame::MainFrame() :
     // Menu Initialization
     wxMenuBar* menuBar = new wxMenuBar();
     wxMenu* menuFile = new wxMenu();
-    menuFile->Append(10, "Settings... \tCtrl+H", "Show Enigma Settings");
+    menuFile->Append(10, "Settings", "Show Enigma Settings");
+    menuFile->Append(20, "Plugboard Array", "Show Plugboard Array");
     menuBar->Append(menuFile, "&File");
     SetMenuBar(menuBar);
 
     Bind(wxEVT_MENU, PressFile, this, 10);
+    Bind(wxEVT_MENU, PressPlug, this, 20);
 
 
     // Model Menu Creation
@@ -37,9 +39,9 @@ MainFrame::MainFrame() :
         text = new wxStaticText(this, wxID_ANY, std::string("Rotor " + std::to_string(i + 1) + ":"), wxPoint(10, 62 + 40 * i), wxSize(50, 20));
         rotors[i] = new RotorSelect(this, i, wxPoint(60, 60 + 40 * i), wxSize(70, 20));
         text = new wxStaticText(this, wxID_ANY, "Rotor Position:", wxPoint(150, 62 + 40 * i), wxSize(80, 20));
-        rotSpin[i] = new CharSpin(this, i, wxPoint(240, 60 + 40 * i), wxSize(40, 20));
+        rotSpin[i] = new CharSpin(this, i, ROTOR_SPIN, wxPoint(240, 60 + 40 * i), wxSize(40, 20));
         text = new wxStaticText(this, wxID_ANY, "Ring Positon:", wxPoint(300, 62 + 40 * i), wxSize(80, 20));
-        ringSpin[i] = new CharSpin(this, i, wxPoint(380, 60 + 40 * i), wxSize(40, 20));
+        ringSpin[i] = new CharSpin(this, i, RING_SPIN, wxPoint(380, 60 + 40 * i), wxSize(40, 20));
 
     }
 
@@ -48,7 +50,7 @@ MainFrame::MainFrame() :
     text = new wxStaticText(this, wxID_ANY, "Reflector:", wxPoint(440, 62), wxSize(60, 20));
     reflectors = new ReflectorSelect(this, wxPoint(500, 60), wxSize(290, 20));
     text = new wxStaticText(this, wxID_ANY, "Plugboard Setting:", wxPoint(440, 102), wxSize(110, 20));
-    plugboardInput = new PlugboardInput(this, enigma->getPlugboard(), wxPoint(550, 100), wxSize(240, 24));
+    plugboardInput = new PlugboardInput(this, wxPoint(550, 100), wxSize(240, 24));
     line = new wxStaticLine(this, wxID_ANY, wxPoint(10, 210), wxSize(780, 1));
 
 
@@ -90,6 +92,7 @@ Enigma* MainFrame::getEnigma()
 void MainFrame::loadComponents(std::string name)
 {
     model = name;
+    // std::cout << *enigma << std::endl;
     loadRotors(model);
     reflectors->loadReflectors(file->getReflectorList(model));
     enigma->setEntryWheel(file->loadEntryWheel(model));
@@ -100,6 +103,12 @@ void MainFrame::loadComponents(std::string name)
 void MainFrame::OnPlugboardUpdate(std::string plugs, Plugboard& plugboard)
 {
 
+}
+
+void MainFrame::updateRotor(int i)
+{
+    getEnigma()->getRotors()[i]->setRotorPosition(rotSpin[i]->getText());
+    getEnigma()->getRotors()[i]->setRingSetting(ringSpin[i]->getText());
 }
 
 void MainFrame::loadRotors(std::string name)
@@ -137,7 +146,12 @@ void MainFrame::OnPress(wxCommandEvent& event)
 void MainFrame::PressFile(wxCommandEvent& event)
 {
     std::cout << "Model: " << model << std::endl;
-    std::cout << enigma->print() << std::endl;  
+    std::cout << *enigma << std::endl;  
+}
+
+void MainFrame::PressPlug(wxCommandEvent& event)
+{
+    enigma->getPlugboard()->showArray();
 }
 
 void MainFrame::OnModelChoose(wxCommandEvent& event)
@@ -145,24 +159,4 @@ void MainFrame::OnModelChoose(wxCommandEvent& event)
     ModelSelect* menu = (ModelSelect*)event.GetEventObject();
     if(model != std::string(menu->GetValue()))
         loadComponents(std::string(menu->GetValue()));
-}
-
-void MainFrame::OnIdleEvent(wxIdleEvent& event)
-{
-    if(file->hasFour(model))
-        for(int i = 0; i < 4; i++)
-        {
-            if(rotSpin[i]->getText() != enigma->getRotors()[i]->getCurrent())
-                enigma->setPosition(rotSpin[i]->getText(), i);
-            if(ringSpin[i]->getText() != enigma->getRotors()[i]->getRing())
-                enigma->setRing(ringSpin[i]->getText(), i);
-        }
-    else
-        for(int i = 0; i < 3; i++)
-        {
-            if(rotSpin[i]->getText() != enigma->getRotors()[i]->getCurrent())
-                enigma->setPosition(rotSpin[i]->getText(), i);
-            if(ringSpin[i]->getText() != enigma->getRotors()[i]->getRing())
-                enigma->setRing(ringSpin[i]->getText(), i);
-        }
 }

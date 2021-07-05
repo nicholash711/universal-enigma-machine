@@ -20,8 +20,7 @@ class MainFrame : public wxFrame
 
         void loadComponents(std::string name);
         void OnPlugboardUpdate(std::string plugs, Plugboard& plugboard);
-        void OnRotorSpin();
-        void OnRingSpin();
+        void updateRotor(int i);
 
     private:
         Enigma* enigma = nullptr;
@@ -39,8 +38,8 @@ class MainFrame : public wxFrame
 
         void OnPress(wxCommandEvent& event);
         void PressFile(wxCommandEvent& event);
+        void PressPlug(wxCommandEvent& event);
         void OnModelChoose(wxCommandEvent& event);
-        void OnIdleEvent(wxIdleEvent& event);
 
         wxDECLARE_DYNAMIC_CLASS(MainFrame);
 };
