@@ -97,6 +97,7 @@ void MainFrame::loadComponents(std::string name)
     reflectors->loadReflectors(file->getReflectorList(model));
     enigma->setEntryWheel(file->loadEntryWheel(model));
     plugboardInput->ChangeValue("");
+    enigma->getPlugboard()->clear();
     plugboardInput->Enable(file->hasPlugboard(model));
 }
 
