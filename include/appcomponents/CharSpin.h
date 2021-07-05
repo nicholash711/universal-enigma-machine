@@ -11,9 +11,10 @@ class CharSpin : public wxSpinButton
         char text = 0;
         bool gotFocus = false;
         int rotor = -1;
+        int type = 0;
 
     public:
-        CharSpin(wxWindow* parent, int n, const wxPoint &pos, const wxSize &size);
+        CharSpin(wxWindow* parent, int n, int t, const wxPoint &pos, const wxSize &size);
         ~CharSpin();
         void setText(char c);
         char getText();
@@ -35,7 +36,9 @@ class CharSpin : public wxSpinButton
 enum
 {
     ID_TEXT_BOX = 300,
-    ID_ARROWS = 350 
+    ID_ARROWS = 350,
+    RING_SPIN = 301,
+    ROTOR_SPIN = 302
 };
 
 #endif

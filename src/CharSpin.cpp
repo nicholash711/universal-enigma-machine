@@ -1,6 +1,8 @@
 #include <appcomponents/CharSpin.h>
+#include <appcomponents/MainFrame.h>
+#include <enigma/Enigma.h>
 
-CharSpin::CharSpin(wxWindow* parent, int n, const wxPoint &pos=wxDefaultPosition, const wxSize &size=wxDefaultSize) :
+CharSpin::CharSpin(wxWindow* parent, int n, int t, const wxPoint &pos=wxDefaultPosition, const wxSize &size=wxDefaultSize) :
     wxSpinButton(parent, ID_ARROWS, wxPoint(pos.x + size.x - 15, pos.y), wxSize(15, size.y), wxSP_WRAP)
 {
     textbox = new wxTextCtrl(parent, ID_TEXT_BOX, "", pos, wxSize(size.x - 15, size.y), wxTE_PROCESS_ENTER);
@@ -18,6 +20,7 @@ CharSpin::CharSpin(wxWindow* parent, int n, const wxPoint &pos=wxDefaultPosition
     textbox->Bind(wxEVT_KILL_FOCUS, OnLoseFocus, this);
 
     rotor = n;
+    type = t;
 }
 
 CharSpin::~CharSpin()
@@ -28,6 +31,16 @@ void CharSpin::setText(char c)
 {
     textbox->ChangeValue((char)toupper(c));
     text = (char)toupper(c);
+
+    MainFrame* frame = wxDynamicCast(GetParent(), MainFrame);
+    if(type == ROTOR_SPIN)
+    {
+        frame->getEnigma()->setPosition(text, rotor);
+    }
+    else if(type == RING_SPIN)
+    {
+        frame->getEnigma()->setRing(text, rotor);
+    }    
 }
 
 char CharSpin::getText()

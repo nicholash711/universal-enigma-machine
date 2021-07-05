@@ -7,9 +7,9 @@ class Rotor
 {
     private:
         std::array<std::string, 26> wiring;
-        std::string turnover;
-        char ring;
-        std::string name;
+        std::string turnover = "";
+        char ring = 0;
+        std::string name = "";
 
     public:
         Rotor();
@@ -17,6 +17,7 @@ class Rotor
         Rotor(std::string wiring, std::string turnover, std::string name);
         std::string getName();
         std::string getTurnover();
+        std::array<std::string, 26> getWiring();
         char getCurrent();
         char getRing();
         int encrypt(char c);
@@ -27,7 +28,6 @@ class Rotor
         bool setRotorPosition(char pos);
         bool setRingSetting(char pos);
         void reset();
-        // void operator=(Rotor& rotor);
         bool operator==(Rotor &rotor);
         friend std::ostream& operator<<(std::ostream &out, const Rotor &rotor);
 };

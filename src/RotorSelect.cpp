@@ -25,14 +25,13 @@ void RotorSelect::loadChoices(std::vector<std::string> rotors)
     this->SetSelection(0);
     MainFrame* frame = wxDynamicCast(GetParent(), MainFrame);
     std::array<std::string, 3> values = frame->getFile()->loadRotor(std::string(GetValue()));
-    Rotor temp(values[0], values[1], values[2]);
-    frame->getEnigma()->setRotor(temp, rotor);
+    frame->getEnigma()->setRotor(values[0], values[1], values[2], rotor);
 }
 
 void RotorSelect::OnChoose(wxCommandEvent& event)
 {
     MainFrame* frame = wxDynamicCast(this->GetParent(), MainFrame);
     std::array<std::string, 3> values = frame->getFile()->loadRotor(std::string(GetValue()));
-    Rotor temp(values[0], values[1], values[2]);
-    frame->getEnigma()->setRotor(temp, rotor);
+    frame->getEnigma()->setRotor(values[0], values[1], values[2], rotor);
+    frame->updateRotor(rotor);
 }

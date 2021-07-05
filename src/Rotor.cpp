@@ -13,10 +13,10 @@ Rotor::Rotor()
 
 Rotor::Rotor(Rotor& rotor)
 {
-    this->name = rotor.name;
-    this->turnover = rotor.turnover;
-    this->ring = rotor.ring;
-    this->wiring = rotor.wiring;
+    this->name = rotor.getName();
+    this->turnover = rotor.getTurnover();
+    this->ring = rotor.getRing();
+    this->wiring = rotor.getWiring();
 }
 
 Rotor::Rotor(std::string wiring, std::string turnover, std::string name)
@@ -28,6 +28,9 @@ Rotor::Rotor(std::string wiring, std::string turnover, std::string name)
     ring = 'A';
     for(int i = 0; i < 26; i++)
         this->wiring[i] = std::string() + (char)(i + 65) + (char)toupper(wiring[i]);
+
+    // for(std::string str : this->wiring)
+    //     std::cout << str << std::endl;
 }
 
 std::string Rotor::getName()
@@ -38,6 +41,11 @@ std::string Rotor::getName()
 std::string Rotor::getTurnover()
 {
     return turnover;
+}
+
+std::array<std::string, 26> Rotor::getWiring()
+{
+    return wiring;
 }
 
 char Rotor::getCurrent()
@@ -99,25 +107,20 @@ bool Rotor::rotate()
 
 bool Rotor::setRotorPosition(char pos)
 {
-    if(!std::isalpha(pos))
-        return false;
-    pos = toupper(pos);
     char current = wiring[0][0];
     int shift = (pos - current + 26) % 26;
+    //std::cout << shift << std::endl;
     std::rotate(wiring.begin(), wiring.begin() + shift, wiring.end());
     return true;
 }
 
 bool Rotor::setRingSetting(char pos)
 {
-    if(!std::isalpha(pos))
-        return false;
-    pos = toupper(pos);
     int shift = (pos - ring + 26) % 26;
     std::array<std::string, 26> temp = wiring;
     for(int i = 0; i < 26; i++)
         wiring[i] = std::string() + temp[i][0] + (char)((temp[(i - shift + 26) % 26][1] + shift - 65) % 26 + 65);
-    ring = pos;
+    this->ring = pos;
     return true;
 
 }
