@@ -32,7 +32,7 @@ void PlugboardInput::OnChange(wxCommandEvent& event)
             plugs.push_back(token);
             token = strtok(NULL, " ");
         }
-        
+            
         if(frame->getEnigma()->setPlugs(plugs))
         {
             SetBackgroundColour(wxColour(*wxWHITE));

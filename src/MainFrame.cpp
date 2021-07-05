@@ -140,7 +140,8 @@ void MainFrame::loadRotors(std::string name)
 
 void MainFrame::OnPress(wxCommandEvent& event)
 {
-    output->SetValue(enigma->encrypt(std::string(input->GetValue())));
+    Enigma temp(*enigma);
+    output->SetValue(temp.encrypt(std::string(input->GetValue())));
 }
 
 void MainFrame::PressFile(wxCommandEvent& event)
