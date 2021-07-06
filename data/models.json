@@ -47,7 +47,9 @@
                 }
             ],
             "entry wheel": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-            "plugboard": true
+            "plugboard": true,
+            "doubleStep": true,
+            "UKWRotate": false
         },
         {
             "name": "Enigma I \"Norenigma\"",
@@ -87,7 +89,9 @@
                 }
             ],
             "entry wheel": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-            "plugboard": true
+            "plugboard": true,
+            "doubleStep": true,
+            "UKWRotate": false
         },
         {
             "name": "Enigma I \"Sondermaschine\"",
@@ -117,7 +121,9 @@
                 }
             ],
             "entry wheel": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-            "plugboard": true
+            "plugboard": true,
+            "doubleStep": true,
+            "UKWRotate": false
         },
         {
             "name": "Enigma M3",
@@ -176,7 +182,9 @@
                 }
             ],
             "entry wheel": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-            "plugboard": true
+            "plugboard": true,
+            "doubleStep": true,
+            "UKWRotate": false
         },
         {
             "name": "Enigma M4",
@@ -246,7 +254,9 @@
                 }
             ],
             "entry wheel": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-            "plugboard": true
+            "plugboard": true,
+            "doubleStep": true,
+            "UKWRotate": false
         },
         {
             "name": "Zahlwerk Enigma A28",
@@ -276,7 +286,9 @@
                 }
             ],
             "entry wheel": "QWERTZUIOASDFGHJKPYXCVBNML",
-            "plugboard": false
+            "plugboard": false,
+            "doubleStep": true,
+            "UKWRotate": true
         },
         {
             "name": "Abwehr Enigma G-312",
@@ -306,7 +318,9 @@
                 }
             ],
             "entry wheel": "QWERTZUIOASDFGHJKPYXCVBNML",
-            "plugboard": false
+            "plugboard": false,
+            "doubleStep": true,
+            "UKWRotate": true
         },
         {
             "name": "Abwehr Enigma G-260",
@@ -336,7 +350,9 @@
                 }
             ],
             "entry wheel": "QWERTZUIOASDFGHJKPYXCVBNML",
-            "plugboard": false
+            "plugboard": false,
+            "doubleStep": true,
+            "UKWRotate": true
         },
         {
             "name": "Abwehr Enigma G-111",
@@ -366,7 +382,9 @@
                 }
             ],
             "entry wheel": "QWERTZUIOASDFGHJKPYXCVBNML",
-            "plugboard": false
+            "plugboard": false,
+            "doubleStep": true,
+            "UKWRotate": true
         },
         {
             "name": "Enigma D / K",
@@ -396,7 +414,9 @@
                 }
             ],
             "entry wheel": "QWERTZUIOASDFGHJKPYXCVBNML",
-            "plugboard": false
+            "plugboard": false,
+            "doubleStep": true,
+            "UKWRotate": true
         },
         {
             "name": "Enigma Swiss-K",
@@ -426,7 +446,9 @@
                 }
             ],
             "entry wheel": "QWERTZUIOASDFGHJKPYXCVBNML",
-            "plugboard": false
+            "plugboard": false,
+            "doubleStep": true,
+            "UKWRotate": true
         },
         {
             "name": "Railway Enigma K",
@@ -456,7 +478,9 @@
                 }
             ],
             "entry wheel": "QWERTZUIOASDFGHJKPYXCVBNML",
-            "plugboard": false
+            "plugboard": false,
+            "doubleStep": true,
+            "UKWRotate": true
         },
         {
             "name": "Enigma T \"Tirpitz\"",
@@ -511,7 +535,9 @@
                 }
             ],
             "entry wheel": "KZROUQHYAIGBLWVSTDXFPNMCJE",
-            "plugboard": false
+            "plugboard": false,
+            "doubleStep": true,
+            "UKWRotate": true
         }
     ]
 }
