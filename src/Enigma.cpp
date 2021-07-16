@@ -150,8 +150,6 @@ void Enigma::setEntryWheel(std::string wiring)
 
 bool Enigma::setPosition(char c, int i)
 {
-    //std::cout << "setting position" << std::endl;
-    //std::cout << rotors[i]->getTurnover() << std::endl;
     return rotors[i]->setRotorPosition(c);
 }
 

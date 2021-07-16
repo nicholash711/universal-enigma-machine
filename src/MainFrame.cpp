@@ -66,9 +66,7 @@ MainFrame::MainFrame() :
     text = new wxStaticText(this, wxID_ANY, "Output:", wxPoint(410, 222), wxSize(50, 18));
     input = new wxTextCtrl(this, wxID_ANY, "", wxPoint(10, 240), wxSize(380, 270), wxTE_MULTILINE);
     output = new wxTextCtrl(this, wxID_ANY, "", wxPoint(410, 240), wxSize(380, 270), wxTE_MULTILINE | wxTE_READONLY);
-    // wxButton* encode = new wxButton(this, wxID_ANY, "Encode", wxPoint(360, 520), wxSize(80, 20));
 
-    // encode->Bind(wxEVT_BUTTON, OnPress, this);
     input->Bind(wxEVT_TEXT, OnInput, this);
 
     //File Input
@@ -100,7 +98,6 @@ Enigma* MainFrame::getEnigma()
 void MainFrame::loadComponents(std::string name)
 {
     model = name;
-    // std::cout << *enigma << std::endl;
     loadRotors(model);
     reflectors->loadReflectors(file->getReflectorList(model));
     enigma->setEntryWheel(file->loadEntryWheel(model));
