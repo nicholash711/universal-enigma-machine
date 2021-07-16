@@ -10,6 +10,7 @@ Enigma::Enigma()
     reflector = new Reflector();
     entry = new EntryWheel();
     doDouble = true;
+    hasFour = false;
 }
 
 Enigma::Enigma(Enigma& enigma)
@@ -23,9 +24,20 @@ Enigma::Enigma(Enigma& enigma)
 
 char Enigma::rotorEncryption(char c)
 {
-    int encrypted = rotors[0]->encrypt(rotors[1]->encrypt(rotors[2]->encrypt(c)));
-    encrypted = reflector->reflect(encrypted);
-    encrypted = rotors[2]->reencrypt(rotors[1]->reencrypt(rotors[0]->reencrypt(encrypted)));
+    int encrypted;
+    if(!hasFour)
+    {
+        encrypted = rotors[0]->encrypt(rotors[1]->encrypt(rotors[2]->encrypt(c)));
+        encrypted = reflector->reflect(encrypted);
+        encrypted = rotors[2]->reencrypt(rotors[1]->reencrypt(rotors[0]->reencrypt(encrypted)));
+    }
+    else
+    {
+        encrypted = rotor4->encrypt(rotors[0]->encrypt(rotors[1]->encrypt(rotors[2]->encrypt(c))));
+        encrypted = reflector->reflect(encrypted);
+        encrypted = rotors[2]->reencrypt(rotors[1]->reencrypt(rotors[0]->reencrypt(rotor4->reencrypt(encrypted))));
+    }
+    
     return encrypted + 65;
 
 }
@@ -171,19 +183,24 @@ void Enigma::doesDouble(bool doub)
     doDouble = doub;
 }
 
+void Enigma::hasFourRotors(bool four)
+{
+    hasFour = four;
+}
+
 std::ostream& operator<<(std::ostream &out, Enigma &enigma)
 {
     out << "\nPlugboard: " << *(enigma.plugboard);
     out << "\nRotors: ";
-    if(enigma.rotor4 != nullptr)
+    if(enigma.hasFour)
         out << enigma.rotor4->getName() << " ";
     out << enigma.rotors[0]->getName() << " " << enigma.rotors[1]->getName() << " " << enigma.rotors[2]->getName();
     out << "\nRotor Settings: ";
-    if(enigma.rotor4 != nullptr)
+    if(enigma.hasFour)
         out << enigma.rotor4->getCurrent() << " ";
     out << enigma.rotors[0]->getCurrent() << " " << enigma.rotors[1]->getCurrent() << " " << enigma.rotors[2]->getCurrent();
     out << "\nRing Settings: ";
-    if(enigma.rotor4 != nullptr)
+    if(enigma.hasFour)
         out << enigma.rotor4->getRing() << " ";
     out << enigma.rotors[0]->getRing() << " " << enigma.rotors[1]->getRing() << " " << enigma.rotors[2]->getRing();
     out << "\nReflector: " << enigma.reflector->getName();

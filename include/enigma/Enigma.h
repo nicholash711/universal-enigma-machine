@@ -17,6 +17,7 @@ class Enigma
         Reflector* reflector;
         EntryWheel* entry;
         bool doDouble;
+        bool hasFour;
 
         char rotorEncryption(char c);
         void rotateRotors();
@@ -41,6 +42,7 @@ class Enigma
         bool setRing(char c, int pos);
         bool clearRotor(int i);
         void doesDouble(bool doub);
+        void hasFourRotors(bool four);
         friend std::ostream& operator<<(std::ostream &out, Enigma &engima);
 };
 
