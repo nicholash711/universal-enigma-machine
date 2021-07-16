@@ -28,9 +28,6 @@ Rotor::Rotor(std::string wiring, std::string turnover, std::string name)
     ring = 'A';
     for(int i = 0; i < 26; i++)
         this->wiring[i] = std::string() + (char)(i + 65) + (char)toupper(wiring[i]);
-
-    // for(std::string str : this->wiring)
-    //     std::cout << str << std::endl;
 }
 
 std::string Rotor::getName()
@@ -53,7 +50,7 @@ char Rotor::getCurrent()
     return wiring[0][0];
 }
 
-char Rotor:: getRing()
+char Rotor::getRing()
 {   
     return ring;
 }
@@ -78,7 +75,9 @@ int Rotor::reencrypt(char c)
     for(int i = 0; i < 26; i++)
     {
         if(wiring[i][1] == encrypt)
+        {
             return i;
+        }
     }
     return -1;
 }
@@ -89,7 +88,10 @@ int Rotor::reencrypt(int c)
     for(int i = 0; i < 26; i++)
     {
         if(wiring[i][1] == encrypt)
+        {
             return i;
+        }
+            
     }
     return -1;
 }
@@ -109,7 +111,6 @@ bool Rotor::setRotorPosition(char pos)
 {
     char current = wiring[0][0];
     int shift = (pos - current + 26) % 26;
-    //std::cout << shift << std::endl;
     std::rotate(wiring.begin(), wiring.begin() + shift, wiring.end());
     return true;
 }

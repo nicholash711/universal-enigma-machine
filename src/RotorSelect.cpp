@@ -34,4 +34,5 @@ void RotorSelect::OnChoose(wxCommandEvent& event)
     std::array<std::string, 3> values = frame->getFile()->loadRotor(std::string(GetValue()));
     frame->getEnigma()->setRotor(values[0], values[1], values[2], rotor);
     frame->updateRotor(rotor);
+    frame->update();
 }

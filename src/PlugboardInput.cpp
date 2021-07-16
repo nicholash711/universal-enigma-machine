@@ -16,9 +16,9 @@ PlugboardInput::~PlugboardInput()
 
 void PlugboardInput::OnChange(wxCommandEvent& event)
 {
+    MainFrame* frame = wxDynamicCast(GetParent(), MainFrame);
     if(std::string(GetValue()).size() != 0)
     {
-        MainFrame* frame = wxDynamicCast(GetParent(), MainFrame);
         std::vector<std::string> plugs;
         std::string temp(GetValue());
         std::transform(temp.begin(), temp.end(), temp.begin(), toupper);
@@ -43,6 +43,7 @@ void PlugboardInput::OnChange(wxCommandEvent& event)
     else
         SetBackgroundColour(wxColour(*wxWHITE));
 
+    frame->update();
     Refresh();
 }
 

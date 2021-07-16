@@ -16,6 +16,7 @@ class Enigma
         Plugboard* plugboard;
         Reflector* reflector;
         EntryWheel* entry;
+        bool doDouble;
 
         char rotorEncryption(char c);
         void rotateRotors();
@@ -39,6 +40,7 @@ class Enigma
         bool setPosition(char c, int pos);
         bool setRing(char c, int pos);
         bool clearRotor(int i);
+        void doesDouble(bool doub);
         friend std::ostream& operator<<(std::ostream &out, Enigma &engima);
 };
 

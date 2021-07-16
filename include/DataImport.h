@@ -35,7 +35,9 @@ class DataImport
         std::string loadEntryWheel(std::string model);
 
         bool hasFour(std::string model);
-        bool hasPlugboard(std::string model);        
+        bool hasPlugboard(std::string model);     
+        bool doesDouble(std::string model);
+        bool UKWRotate(std::string model);  
 };
 
 #endif

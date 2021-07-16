@@ -7,8 +7,11 @@
 class Reflector
 {
     private:
-        std::array<char, 26> reflector;
+        std::array<std::string, 26> reflector;
         std::string name;
+        char ring;
+        bool rotatable;
+
     public:
         Reflector();
         Reflector(Reflector& ref);
@@ -16,6 +19,13 @@ class Reflector
         std::string getName();
         int reflect(char c);
         int reflect(int c);
+        bool isRotatable();
+        char getCurrent();
+        char getRing();
+        void setRotatable(bool rotate);
+        void setReflectorPosition(char c);
+        void setRingPosition(char c);
+        void rotate();
         void operator=(Reflector &reflector);
         friend std::ostream& operator<<(std::ostream &out, Reflector &reflector);
 };

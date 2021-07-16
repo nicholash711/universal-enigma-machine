@@ -1,9 +1,11 @@
 #include <enigma/EntryWheel.h>
+#include <iostream>
 
 EntryWheel::EntryWheel()
 {
+    wiring = std::string();
     for(int i = 0; i < 26; i++)
-        wiring[0] = std::string() + (char)(i + 65) + (char)(i + 65);
+        wiring += (char)(i + 65);
 }
 
 EntryWheel::EntryWheel(EntryWheel& wheel)
@@ -13,11 +15,27 @@ EntryWheel::EntryWheel(EntryWheel& wheel)
 
 EntryWheel::EntryWheel(std::string wire)
 {
-    for(int i = 0; i < 26; i++)
-        wiring[0] = std::string() + (char)(i + 65) + wire[i];
+    wiring = wire;
 }
 
 char EntryWheel::enterChar(char c)
 {
-    return wiring[c - 65][1];
+    return wiring[c - 65];
+}
+
+char EntryWheel::reenterChar(char c)
+{
+    for(int i = 0; i < 26; i++)
+        if(wiring[i] == c)
+        {
+            return i + 65;
+        }
+            
+    return 0;
+}
+
+std::ostream& operator<<(std::ostream &out, EntryWheel& wheel)
+{
+    out << wheel.wiring << std::endl;
+    return out;
 }

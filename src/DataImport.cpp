@@ -121,3 +121,13 @@ bool DataImport::hasPlugboard(std::string model)
 {
     return objects[model]->operator[]("plugboard").GetBool();
 }
+
+bool DataImport::doesDouble(std::string model)
+{
+    return objects[model]->operator[]("doubleStep").GetBool();
+}
+
+bool DataImport::UKWRotate(std::string model)
+{
+    return objects[model]->operator[]("UKWRotate").GetBool();
+}

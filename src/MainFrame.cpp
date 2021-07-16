@@ -18,12 +18,14 @@ MainFrame::MainFrame() :
     wxMenuBar* menuBar = new wxMenuBar();
     wxMenu* menuFile = new wxMenu();
     menuFile->Append(10, "Settings", "Show Enigma Settings");
-    menuFile->Append(20, "Plugboard Array", "Show Plugboard Array");
+    menuFile->Append(20, "Reflector", "Show Reflector");
+    menuFile->Append(30, "Entry Wheel", "Show EKW wiring");
     menuBar->Append(menuFile, "&File");
     SetMenuBar(menuBar);
 
     Bind(wxEVT_MENU, PressFile, this, 10);
     Bind(wxEVT_MENU, PressPlug, this, 20);
+    Bind(wxEVT_MENU, PressEKW, this, 30);
 
 
     // Model Menu Creation
@@ -48,7 +50,12 @@ MainFrame::MainFrame() :
 
     // Entry Wheel, Reflector, & Plugboard Controls Creation
     text = new wxStaticText(this, wxID_ANY, "Reflector:", wxPoint(440, 62), wxSize(60, 20));
-    reflectors = new ReflectorSelect(this, wxPoint(500, 60), wxSize(290, 20));
+    reflectors = new ReflectorSelect(this, wxPoint(500, 60), wxSize(110, 20));
+    text = new wxStaticText(this, wxID_ANY, "Rotor:", wxPoint(620, 62), wxSize(40, 20));
+    ukwPos = new CharSpin(this, 5, ROTOR_SPIN, wxPoint(660, 60), wxSize(40, 20));
+    text = new wxStaticText(this, wxID_ANY, "Ring:", wxPoint(710, 62), wxSize(40, 20));
+    ukwRing = new CharSpin(this, 5, RING_SPIN, wxPoint(750, 60), wxSize(40, 20));
+
     text = new wxStaticText(this, wxID_ANY, "Plugboard Setting:", wxPoint(440, 102), wxSize(110, 20));
     plugboardInput = new PlugboardInput(this, wxPoint(550, 100), wxSize(240, 24));
     line = new wxStaticLine(this, wxID_ANY, wxPoint(10, 210), wxSize(780, 1));
@@ -59,9 +66,10 @@ MainFrame::MainFrame() :
     text = new wxStaticText(this, wxID_ANY, "Output:", wxPoint(410, 222), wxSize(50, 18));
     input = new wxTextCtrl(this, wxID_ANY, "", wxPoint(10, 240), wxSize(380, 270), wxTE_MULTILINE);
     output = new wxTextCtrl(this, wxID_ANY, "", wxPoint(410, 240), wxSize(380, 270), wxTE_MULTILINE | wxTE_READONLY);
-    wxButton* encode = new wxButton(this, wxID_ANY, "Encode", wxPoint(360, 520), wxSize(80, 20));
+    // wxButton* encode = new wxButton(this, wxID_ANY, "Encode", wxPoint(360, 520), wxSize(80, 20));
 
-    encode->Bind(wxEVT_BUTTON, OnPress, this);
+    // encode->Bind(wxEVT_BUTTON, OnPress, this);
+    input->Bind(wxEVT_TEXT, OnInput, this);
 
     //File Input
     file = new DataImport(this, "models.json");
@@ -99,17 +107,27 @@ void MainFrame::loadComponents(std::string name)
     plugboardInput->ChangeValue("");
     enigma->getPlugboard()->clear();
     plugboardInput->Enable(file->hasPlugboard(model));
+    enigma->doesDouble(file->doesDouble(model));
+    ReflectorUpdate();
 }
 
-void MainFrame::OnPlugboardUpdate(std::string plugs, Plugboard& plugboard)
+void MainFrame::ReflectorUpdate()
 {
-
+    ukwPos->setText('A');
+    ukwRing->setText('A');
+    ukwPos->enable(file->UKWRotate(model));
+    ukwRing->enable(file->UKWRotate(model));
 }
 
 void MainFrame::updateRotor(int i)
 {
     getEnigma()->getRotors()[i]->setRotorPosition(rotSpin[i]->getText());
     getEnigma()->getRotors()[i]->setRingSetting(ringSpin[i]->getText());
+}
+
+void MainFrame::update()
+{
+    output->SetValue(enigma->encrypt(std::string(input->GetValue())));
 }
 
 void MainFrame::loadRotors(std::string name)
@@ -139,10 +157,9 @@ void MainFrame::loadRotors(std::string name)
     }
 }
 
-void MainFrame::OnPress(wxCommandEvent& event)
+void MainFrame::OnInput(wxCommandEvent& event)
 {
-    Enigma temp(*enigma);
-    output->SetValue(temp.encrypt(std::string(input->GetValue())));
+    update();
 }
 
 void MainFrame::PressFile(wxCommandEvent& event)
@@ -153,9 +170,13 @@ void MainFrame::PressFile(wxCommandEvent& event)
 
 void MainFrame::PressPlug(wxCommandEvent& event)
 {
-    enigma->getPlugboard()->showArray();
+    std::cout << *(enigma->getReflector()) << std::endl;
 }
 
+void MainFrame::PressEKW(wxCommandEvent& event)
+{
+    std::cout << *(enigma->getEntryWheel()) << std::endl;
+}
 void MainFrame::OnModelChoose(wxCommandEvent& event)
 {
     ModelSelect* menu = (ModelSelect*)event.GetEventObject();

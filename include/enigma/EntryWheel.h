@@ -1,18 +1,20 @@
 #ifndef ENTRYWHEEL_H
 #define ENTRYWHEEL_H
 
-#include <array>
+#include <string>
 
 class EntryWheel
 {
     private:
-        std::array<std::string, 26> wiring;
+        std::string wiring;
 
     public:
         EntryWheel();
         EntryWheel(EntryWheel& wheel);
         EntryWheel(std::string wire);
         char enterChar(char c);
+        char reenterChar(char c);
+        friend std::ostream& operator<<(std::ostream &out, EntryWheel& wheel);
 };
 
 #endif

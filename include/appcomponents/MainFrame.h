@@ -19,8 +19,9 @@ class MainFrame : public wxFrame
         Enigma* getEnigma();
 
         void loadComponents(std::string name);
-        void OnPlugboardUpdate(std::string plugs, Plugboard& plugboard);
+        void ReflectorUpdate();
         void updateRotor(int i);
+        void update();
 
     private:
         Enigma* enigma = nullptr;
@@ -30,15 +31,18 @@ class MainFrame : public wxFrame
         CharSpin* rotSpin[4];
         CharSpin* ringSpin[4];
         ReflectorSelect* reflectors = nullptr;
+        CharSpin* ukwPos;
+        CharSpin* ukwRing;
         PlugboardInput* plugboardInput = nullptr;
         DataImport* file = nullptr;
         std::string model = "";
 
         void loadRotors(std::string name);
 
-        void OnPress(wxCommandEvent& event);
+        void OnInput(wxCommandEvent& event);
         void PressFile(wxCommandEvent& event);
         void PressPlug(wxCommandEvent& event);
+        void PressEKW(wxCommandEvent& event);
         void OnModelChoose(wxCommandEvent& event);
 
         wxDECLARE_DYNAMIC_CLASS(MainFrame);

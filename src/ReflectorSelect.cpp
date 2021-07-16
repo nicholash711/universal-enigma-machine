@@ -26,6 +26,7 @@ void ReflectorSelect::loadReflectors(std::vector<std::string> reflectors)
     std::array<std::string, 2> values = frame->getFile()->loadReflector(std::string(GetValue()));
     Reflector temp(values[0], values[1]);
     frame->getEnigma()->setReflector(temp);
+    frame->getEnigma()->getReflector()->setRotatable(frame->getFile()->UKWRotate(frame->getModel()));
 }
 
 void ReflectorSelect::OnChoose(wxCommandEvent& event)
@@ -34,4 +35,6 @@ void ReflectorSelect::OnChoose(wxCommandEvent& event)
     std::array<std::string, 2> values = frame->getFile()->loadReflector(std::string(GetValue()));
     Reflector temp(values[0], values[1]);
     frame->getEnigma()->setReflector(temp);
+    frame->getEnigma()->getReflector()->setRotatable(frame->getFile()->UKWRotate(frame->getModel()));
+    frame->update();
 }
