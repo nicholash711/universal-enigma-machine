@@ -33,19 +33,20 @@ void CharSpin::setText(char c)
     text = (char)toupper(c);
 
     MainFrame* frame = wxDynamicCast(GetParent(), MainFrame);
+    int temp = frame->getEnigma()->isM4() ? rotor - 1 : rotor;
     if(type == ROTOR_SPIN)
     {
-        if(rotor == 4)
+        if(temp >= 4)
             frame->getEnigma()->getReflector()->setReflectorPosition(text);
         else
-            frame->getEnigma()->setPosition(text, rotor);
+            frame->getEnigma()->setPosition(text, temp);
     }
     else if(type == RING_SPIN)
     {
-        if(rotor == 4)
+        if(temp >= 4)
             frame->getEnigma()->getReflector()->setRingPosition(text);
         else
-            frame->getEnigma()->setRing(text, rotor);
+            frame->getEnigma()->setRing(text, temp);
     }
     frame->update();    
 }

@@ -27,12 +27,15 @@ class Enigma
         Enigma();
         Enigma(Enigma& enigma);
         std::array<Rotor*, 3> getRotors();
+        Rotor* getRotor4();
         Reflector* getReflector();
         Plugboard* getPlugboard();
         EntryWheel* getEntryWheel();
+        bool isM4();
         std::string encrypt(std::string mes);
         void setRotor(Rotor& rot, int i);
         void setRotor(std::string wiring, std::string turnover, std::string name, int i);
+        void setRotor4(std::string wiring, std::string name);
         bool setPlugs(std::vector<std::string> plugs);
         bool setPlug(std::string plug);
         void setReflector(Reflector& ref);

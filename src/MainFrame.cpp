@@ -118,8 +118,8 @@ void MainFrame::ReflectorUpdate()
 
 void MainFrame::updateRotor(int i)
 {
-    getEnigma()->getRotors()[i]->setRotorPosition(rotSpin[i]->getText());
-    getEnigma()->getRotors()[i]->setRingSetting(ringSpin[i]->getText());
+    getEnigma()->setPosition(rotSpin[i + 1]->getText(), i);
+    getEnigma()->setRing(ringSpin[i + 1]->getText(), i);
 }
 
 void MainFrame::update()
@@ -137,6 +137,7 @@ void MainFrame::loadRotors(std::string name)
     }
     if(file->hasFour(name))
     {
+        enigma->hasFourRotors(true);
         rotors[3]->Enable(true);
         rotSpin[3]->enable(true);
         ringSpin[3]->enable(true);
@@ -146,6 +147,7 @@ void MainFrame::loadRotors(std::string name)
     }
     else
     {
+        enigma->hasFourRotors(false);
         for(int i = 0; i < 3; i++)
             rotors[i]->loadChoices(file->getRotorList(name));
         rotors[3]->Enable(false);

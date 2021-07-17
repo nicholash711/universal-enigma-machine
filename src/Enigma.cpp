@@ -60,6 +60,11 @@ std::array<Rotor*, 3> Enigma::getRotors()
     return rotors;
 }
 
+Rotor* Enigma::getRotor4()
+{
+    return rotor4;
+}
+
 Reflector* Enigma::getReflector()
 {
     return reflector;
@@ -73,6 +78,11 @@ Plugboard* Enigma::getPlugboard()
 EntryWheel* Enigma::getEntryWheel()
 {
     return entry;
+}
+
+bool Enigma::isM4()
+{
+    return hasFour;
 }
 
 char Enigma::encryptChar(char c)
@@ -123,6 +133,13 @@ void Enigma::setRotor(std::string wiring, std::string turnover, std::string name
     delete this->rotors[i];
     rotors[i] = new Rotor(wiring, turnover, name);
 }
+
+void Enigma::setRotor4(std::string wiring, std::string name)
+{
+    delete this->rotor4;
+    rotor4 = new Rotor(wiring, "", name);
+}
+
 bool Enigma::setPlugs(std::vector<std::string> plugs)
 {
     plugboard->clear();
@@ -162,12 +179,12 @@ void Enigma::setEntryWheel(std::string wiring)
 
 bool Enigma::setPosition(char c, int i)
 {
-    return rotors[i]->setRotorPosition(c);
+    return i >= 0 ? rotors[i]->setRotorPosition(c) : rotor4->setRotorPosition(c);
 }
 
 bool Enigma::setRing(char c, int i)
 {
-    return rotors[i]->setRingSetting(c);
+    return i >= 0 ? rotors[i]->setRingSetting(c) : rotor4->setRingSetting(c);
 }
 
 bool Enigma::clearRotor(int i)
