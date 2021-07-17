@@ -191,6 +191,7 @@ bool Enigma::clearRotor(int i)
 {
     if(i < 0 || i > 2)
         return false;
+    delete rotors[i];
     rotors[i] = new Rotor();
     return true;
 }
