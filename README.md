@@ -1,7 +1,5 @@
 # Universal-Enigma-Machine
-
-
-Simulation of various German Enigma Machine
+Simulation of multiple German Enigma Machine
 ---
 ## Implemented Models
 - Abwehr Enigma G-111
