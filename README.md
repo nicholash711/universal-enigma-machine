@@ -14,8 +14,7 @@ Simulation of multiple German Enigma Machine
 - Enigma T "Tirpitz"
 - Railway Enigma K
 - Zahlwerk Enigma A28
-
-### Does not Support:
+### Does not Support
 - UKW-D
 - Uhr
 
